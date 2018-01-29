@@ -1,0 +1,34 @@
+{
+  "name": "trades_monitor",
+  "version": "1.0.0",
+  "description": "Trade Monitor",
+  "keywords": [
+    "Crypto",
+    "Node.js",
+    "Bitcoin",
+    "Trades Monitor"
+  ],
+  "author": {
+    "name": "Ryan Breen",
+    "email": "ryan@alkemi.ai",
+    "url": "https://api.alkemi.ai/trades"
+  },
+  "homepage": "https://api.alkemi.ai/",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/project-alkemi/data.alkemi.ai"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "express": "~3.4.4",
+    "pmx": "^1.5.4",
+    "toobusy-js": "^0.5.1"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "main": "trades.js"
+}
