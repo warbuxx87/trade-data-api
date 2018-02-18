@@ -75,8 +75,10 @@ sim1.prototype.update = function() {
               i++
             }
             var success = parseFloat(1-(failed/total));
+            //how much more USD have we sold than bought?
             var usd = parseFloat(sold-bought);
-            var btc = parseFloat(sell_orders-buy_orders);
+            //how much more BTC have we bought than sold?
+            var btc = parseFloat(buy_orders-sell_orders);
             //console.log(last);
             self.order = last.OrderTypeAsString;
             self.price = parseFloat(last.Price);
