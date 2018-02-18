@@ -34,7 +34,8 @@ bot17.prototype.update = function() {
 
         response.on('end', function() {
             var data = JSON.parse(str);
-            var profits = data.InterExchangeArbitrageBot.TotalProfits;
+            var profits = parseFloat(data.InterExchangeArbitrageBot.TotalFeeCosts); // fix because haas calc issue
+            var fees = profits * .0035;
             try {
               var trades = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder.length;
               var avg_earn = profits / trades;
@@ -42,11 +43,11 @@ bot17.prototype.update = function() {
                 var trades = 0;
                 var avg_earn = 0;
             }
-            self.profits = parseFloat(data.InterExchangeArbitrageBot.TotalFeeCosts); // fix because haas calc issue
+            self.profits = profits;
             self.trades = parseFloat(trades);
             self.avg_earn = parseFloat(avg_earn);
             self.roi = parseFloat(data.InterExchangeArbitrageBot.ROI);
-            self.fees = parseFloat(data.InterExchangeArbitrageBot.TotalFeeCosts);
+            self.fees = fees;
             self.name = data.InterExchangeArbitrageBot.Name;
             self.updated = new Date();
         });
