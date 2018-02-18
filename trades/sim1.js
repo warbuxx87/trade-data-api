@@ -8,8 +8,8 @@ function sim1() {
   this.total = 0;
   this.buy_orders = 0;
   this.sell_orders = 0;
-  this.success = 0;
   this.failed = 0;
+  this.success = 0;
   this.arbitrage = 0;
   this.updated = new Date(2000, 1, 1);
   this.timeout = 5000;
