@@ -6,6 +6,8 @@ function sim3() {
   this.price = 0;
   this.amount = 0;
   this.total = 0;
+  this.buy_orders = 0;
+  this.sell_orders = 0;
   this.arbitrage = 0;
   this.updated = new Date(2000, 1, 1);
   this.timeout = 5000;

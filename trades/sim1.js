@@ -10,7 +10,7 @@ function sim1() {
   this.sell_orders = 0;
   this.arbitrage = 0;
   this.updated = new Date(2000, 1, 1);
-  this.timeout = 30000;
+  this.timeout = 5000;
   try {
       this.update();
   } catch (e) {
