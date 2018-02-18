@@ -35,8 +35,13 @@ bot6.prototype.update = function() {
         response.on('end', function() {
             var data = JSON.parse(str);
             var profits = data.InterExchangeArbitrageBot.TotalProfits;
-            var trades = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder.length;
-            var avg_earn = profits / trades;
+            try {
+              var trades = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder.length;
+              var avg_earn = profits / trades;
+            } catch (e) {
+                var trades = 0;
+                var avg_earn = 0;
+            }
             self.profits = parseFloat(profits);
             self.trades = parseFloat(trades);
             self.avg_earn = parseFloat(avg_earn);
