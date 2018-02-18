@@ -8,6 +8,7 @@ function sim1() {
   this.total = 0;
   this.buy_orders = 0;
   this.sell_orders = 0;
+  this.failed = 0;
   this.arbitrage = 0;
   this.updated = new Date(2000, 1, 1);
   this.timeout = 5000;
@@ -41,10 +42,16 @@ sim1.prototype.update = function() {
             var buy_orders = 0;
             var sell_orders = 0;
             var i = 0;
-            var check = 2;
+            var check = "";
+            var failed = 0;
             while (total > i) {
               check = data.SpotOrders[i].OrderTypeAsString;
+              failed = data.SpotOrders[i].OrderStatusAsString;
               //console.log(check);
+              if (failed != "Completed" ){
+                check = "No";
+                failed = failed+1;
+              }
               if (check == "Sell") {
                 sell_orders = sell_orders+1;
               }
@@ -60,6 +67,7 @@ sim1.prototype.update = function() {
             self.total = data.SpotOrders.length;
             self.buy_orders = buy_orders;
             self.sell_orders = sell_orders;
+            self.failed = failed;
             self.arbitrage = last.Origin.toString().substr(25);
             self.updated = last.LastUpdate;
         });
