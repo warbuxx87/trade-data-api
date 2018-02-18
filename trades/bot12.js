@@ -42,7 +42,7 @@ bot12.prototype.update = function() {
                 var trades = 0;
                 var avg_earn = 0;
             }
-            self.profits = parseFloat(profits);
+            self.profits = parseFloat(data.InterExchangeArbitrageBot.TotalFeeCosts); // fix because haas calc issue
             self.trades = parseFloat(trades);
             self.avg_earn = parseFloat(avg_earn);
             self.roi = parseFloat(data.InterExchangeArbitrageBot.ROI);
