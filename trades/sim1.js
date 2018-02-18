@@ -6,6 +6,8 @@ function sim1() {
   this.price = 0;
   this.amount = 0;
   this.total = 0;
+  this.buy_orders = 0;
+  this.sell_orders = 0;
   this.arbitrage = 0;
   this.updated = new Date(2000, 1, 1);
   this.timeout = 5000;
@@ -35,11 +37,28 @@ sim1.prototype.update = function() {
         response.on('end', function() {
             var data = JSON.parse(str);
             var last = data.SpotOrders.pop();
+            var total = self.total = data.SpotOrders.length;
+            var buy_orders = 0;
+            var sell_orders = 0;
+            var i = 0;
+            var check = 2;
+            while i <= total {
+              check = data.SpotOrders[i].OrderType;
+              if check = 0 {
+                sell_orders = sell_orders+1;
+              }
+              if check = 1 {
+                buy_orders = buy_orders+1;
+              }
+              i++
+            }
             //console.log(last);
             self.order = last.OrderTypeAsString;
             self.price = parseFloat(last.Price);
             self.amount = last.Amount;
             self.total = data.SpotOrders.length;
+            self.buy_orders = buy_orders;
+            self.sell_orders = sell_orders;
             self.arbitrage = last.Origin.toString().substr(25);
             self.updated = last.LastUpdate;
         });
