@@ -44,7 +44,7 @@ sim1.prototype.update = function() {
             var check = 2;
             while (total > i) {
               check = data.SpotOrders[i].OrderTypeAsString;
-              console.log(check);
+              //console.log(check);
               if (check == "Sell") {
                 sell_orders = sell_orders+1;
               }

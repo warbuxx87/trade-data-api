@@ -35,11 +35,29 @@ sim3.prototype.update = function() {
         response.on('end', function() {
             var data = JSON.parse(str);
             var last = data.SpotOrders.pop();
+            var total = self.total = data.SpotOrders.length;
+            var buy_orders = 0;
+            var sell_orders = 0;
+            var i = 0;
+            var check = 2;
+            while (total > i) {
+              check = data.SpotOrders[i].OrderTypeAsString;
+              //console.log(check);
+              if (check == "Sell") {
+                sell_orders = sell_orders+1;
+              }
+              if (check == "Buy") {
+                buy_orders = buy_orders+1;
+              }
+              i++
+            }
             //console.log(last);
             self.order = last.OrderTypeAsString;
             self.price = parseFloat(last.Price);
             self.amount = last.Amount;
             self.total = data.SpotOrders.length;
+            self.buy_orders = buy_orders;
+            self.sell_orders = sell_orders;
             self.arbitrage = last.Origin.toString().substr(25);
             self.updated = last.LastUpdate;
         });
