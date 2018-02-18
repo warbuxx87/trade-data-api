@@ -52,7 +52,6 @@ bot7.prototype.update = function() {
             self.updated = new Date();
         });
     }
-    }
 
     https.request(options, callback).end();
 
