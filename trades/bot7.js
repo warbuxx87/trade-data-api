@@ -35,7 +35,7 @@ bot7.prototype.update = function() {
         response.on('end', function() {
             var data = JSON.parse(str);
             var profits = parseFloat(data.InterExchangeArbitrageBot.TotalFeeCosts); // fix because haas calc issue
-            var fees = profits * .0035;
+            var fees = profits * .0051;
             try {
               var trades = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder.length;
               var avg_earn = profits / trades;
