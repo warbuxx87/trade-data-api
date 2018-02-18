@@ -42,7 +42,7 @@ sim1.prototype.update = function() {
             var sell_orders = 0;
             var i = 0;
             var check = 2;
-            while i <= total {
+            while total > i {
               check = data.SpotOrders[i].OrderType;
               if check = 0 {
                 sell_orders = sell_orders+1;
