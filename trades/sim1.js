@@ -15,7 +15,7 @@ function sim1() {
   this.fail_total = 0;
   this.usd = 0;
   this.btc = 0;
-  this.arbitrage = 0;
+  this.last_arbitrage = 0;
   this.updated = new Date(2000, 1, 1);
   this.timeout = 5000;
   try {
@@ -93,7 +93,7 @@ sim1.prototype.update = function() {
             self.fail_total = fail_total;
             self.usd = usd;
             self.btc = btc;
-            self.arbitrage = last.Origin.toString().substr(25);
+            self.last_arbitrage = last.Origin.toString().substr(25);
             self.updated = last.LastUpdate;
         });
     }
