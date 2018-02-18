@@ -49,7 +49,7 @@ sim1.prototype.update = function() {
               check = data.SpotOrders[i].OrderTypeAsString;
               orderStatus = data.SpotOrders[i].OrderStatusAsString;
               //console.log(check);
-              if (OrderStatus != "Completed" ){
+              if (orderStatus != "Completed" ){
                 check = "No";
                 failed = failed+1;
               }
