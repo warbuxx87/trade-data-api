@@ -13,7 +13,8 @@ function sim1() {
   this.buy_total = 0;
   this.sell_total = 0;
   this.fail_total = 0;
-  this.profit = 0;
+  this.usd = 0;
+  this.btc = 0;
   this.arbitrage = 0;
   this.updated = new Date(2000, 1, 1);
   this.timeout = 5000;
@@ -74,7 +75,8 @@ sim1.prototype.update = function() {
               i++
             }
             var success = parseFloat(1-(failed/total));
-            var profit = parseFloat(sold-bought);
+            var usd = parseFloat(sold-bought);
+            var btc = parseFloat(sell_orders-buy_orders);
             //console.log(last);
             self.order = last.OrderTypeAsString;
             self.price = parseFloat(last.Price);
@@ -87,7 +89,8 @@ sim1.prototype.update = function() {
             self.buy_total = bought;
             self.sell_total = sold;
             self.fail_total = fail_total;
-            self.profit = profit;
+            self.usd = usd;
+            self.btc = btc;
             self.arbitrage = last.Origin.toString().substr(25);
             self.updated = last.LastUpdate;
         });
