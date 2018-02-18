@@ -44,11 +44,12 @@ sim1.prototype.update = function() {
             var i = 0;
             var check = "";
             var failed = 0;
+            var OrderStatus = "";
             while (total > i) {
               check = data.SpotOrders[i].OrderTypeAsString;
-              failed = data.SpotOrders[i].OrderStatusAsString;
+              orderStatus = data.SpotOrders[i].OrderStatusAsString;
               //console.log(check);
-              if (failed != "Completed" ){
+              if (OrderStatus != "Completed" ){
                 check = "No";
                 failed = failed+1;
               }
