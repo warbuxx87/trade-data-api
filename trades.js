@@ -34,6 +34,9 @@ var sim5 = require('./trades/sim5');
 var sim6 = require('./trades/sim6');
 var sim7 = require('./trades/sim7');
 
+// Aggregated Stats
+var stats = require('./trades/stats');
+
 /**
  *  Define the application.
  */
@@ -119,6 +122,7 @@ var TradeMonitor = function() {
                self.bot15, self.bot16, self.bot17, self.bot18, self.bot19, self.bot20
             ],
         exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7 ],
+        stats: [self.stats],
       }));
     };
 
@@ -198,6 +202,9 @@ var TradeMonitor = function() {
     self.sim5 = new sim5();
     self.sim6 = new sim6();
     self.sim7 = new sim7();
+
+    // aggregate stats
+    self.stats = new stats();
   };
 
 }; /*  Trade Monitor.  */
