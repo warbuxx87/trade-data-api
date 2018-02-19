@@ -18,11 +18,12 @@ function sim7() {
 	this.last_arbitrage = 0;
 	this.updated = new Date(2000, 1, 1);
 	this.timeout = 60000;
-	this.update();
-} catch (e) {
-	console.log(e);
-	setTimeout(this.update.bind(this), this.timeout);
-}
+	try {
+		this.update();
+	} catch (e) {
+		console.log(e);
+		setTimeout(this.update.bind(this), this.timeout);
+	}
 }
 
 sim7.prototype.update = function() {
