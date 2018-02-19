@@ -60,18 +60,31 @@ stats.prototype.update = function() {
 
             while (exchanges > i) {
               exchange = data.exchanges[i];
+              console.log(i, ' - exchange: ', exchanges);
               total = total+exchange.total;
+              console.log('exchange: ', exchange);
               buy_total = buy_total+exchange.buy_total;
+              console.log('buy_total: ', buy_total);
               buy_orders = buy_orders+exchange.buy_orders;
+              console.log('buy_orders: ', buy_orders);
               sell_total = sell_total+exchange.sell_total;
-              sell_orders = sell_total+exchange.sell_total;
+              console.log('sell_total: ', sell_total);
+              sell_orders = sell_orders+exchange.sell_orders;
+              console.log('sell_orders: ', sell_orders);
               usd = usd+exchange.usd;
+              console.log('usd: ', usd);
               btc = btc+exchange.btc;
+              console.log('btc: ', btc);
               success = success+exchange.success;
+              console.log('success: ', success);
               failed = failed+exchange.failed;
+              console.log('failed: ', failed);
               fail_total = fail_total+exchange.fail_total;
+              console.log('fail_total: ', fail_total);
               avg_buy = avg_buy+exchange.avg_buy;
+              console.log('avg_buy: ', avg_buy);
               avg_sell = avg_sell+exchange.avg_sell;
+              console.log('avg_sell: ', avg_sell);
               i++
             }
 
@@ -80,7 +93,7 @@ stats.prototype.update = function() {
             self.buy_orders = buy_orders;
             self.sell_orders = sell_orders;
             self.failed = failed;
-            self.success = success;
+            self.success = success / exchanges;
             self.buy_total = buy_total;
             self.sell_total = sell_total;
             self.fail_total = fail_total;
