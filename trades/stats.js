@@ -87,7 +87,6 @@ stats.prototype.update = function() {
             self.btc = btc;
             self.avg_buy = avg_buy;
             self.avg_sell = avg_sell;
-            self.updated = last.LastUpdate;
         });
     }
 
