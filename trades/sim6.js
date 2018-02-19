@@ -94,7 +94,7 @@ sim6.prototype.update = function() {
 			var success = parseFloat(1 - (failed / total));
 
 			//how much more USD have we sold than bought?
-			var usd = parseFloat(sold - bought);
+			var usd = parseFloat(bought - sold);
 
 			//how much more BTC have we bought than sold?
 			var btc = parseFloat(buy_orders - sell_orders);
