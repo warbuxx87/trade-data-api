@@ -97,7 +97,7 @@ sim6.prototype.update = function() {
 			var usd = parseFloat(bought - sold);
 
 			//how much more BTC have we bought than sold?
-			var btc = parseFloat(buy_orders - sell_orders);
+			var btc = parseFloat(sell_orders - buy_orders);
 
 			// what's our average buy price per BTC?
 			var avg_buy = bought / buy_orders;
