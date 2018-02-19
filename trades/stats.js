@@ -62,9 +62,9 @@ stats.prototype.update = function() {
             while (exchanges > i) {
               exchange = data.exchanges[i];
               name = exchange.name;
-              console.log('exchange: ', exchange);
+              console.log('exchange: ', name);
               total = total+exchange.total;
-              console.log('exchange: ', exchange);
+              console.log('total: ', total);
               buy_total = buy_total+exchange.buy_total;
               console.log('buy_total: ', buy_total);
               buy_orders = buy_orders+exchange.buy_orders;
