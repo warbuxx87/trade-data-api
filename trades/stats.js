@@ -47,6 +47,8 @@ stats.prototype.update = function() {
             var total;
             var buy_total;
             var sell_total;
+            var buy_orders;
+            var sell_orders;
             var usd;
             var btc;
             var success;
