@@ -45,21 +45,23 @@ stats.prototype.update = function() {
             console.log('exchanges: ', exchanges)
             var i = 0;
             var exchange = "";
-            var total;
-            var buy_total;
-            var sell_total;
-            var buy_orders;
-            var sell_orders;
-            var usd;
-            var btc;
-            var success;
-            var failed;
-            var fail_total;
-            var avg_buy;
-            var avg_sell;
+            var total = 0;
+            var buy_total = 0 ;
+            var sell_total = 0;
+            var buy_orders = 0;
+            var sell_orders = 0;
+            var usd = 0;
+            var btc = 0;
+            var success = 0;
+            var failed = 0;
+            var fail_total = 0;
+            var avg_buy = 0;
+            var avg_sell = 0;
+            var name = name;
 
             while (exchanges > i) {
               exchange = data.exchanges[i];
+              name = exchange.name;
               console.log('exchange: ', exchange);
               total = total+exchange.total;
               console.log('exchange: ', exchange);
