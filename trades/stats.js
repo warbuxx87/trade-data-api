@@ -42,7 +42,7 @@ stats.prototype.update = function() {
         response.on('end', function() {
             var data = JSON.parse(str);
             var exchanges = data.exchanges.length;
-            console.log('exchanges: ' exchanges)
+            console.log('exchanges: ', exchanges)
             var i = 0;
             var exchange = "";
             var total;
