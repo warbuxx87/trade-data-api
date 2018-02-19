@@ -15,6 +15,8 @@ function sim1() {
   this.fail_total = 0;
   this.usd = 0;
   this.btc = 0;
+  this.avg_buy = 0;
+  this.avg_sell = 0;
   this.last_arbitrage = 0;
   this.updated = new Date(2000, 1, 1);
   this.timeout = 5000;
@@ -74,11 +76,21 @@ sim1.prototype.update = function() {
               }
               i++
             }
+            //how many of our orders complete?
             var success = parseFloat(1-(failed/total));
+
             //how much more USD have we sold than bought?
             var usd = parseFloat(sold-bought);
+
             //how much more BTC have we bought than sold?
             var btc = parseFloat(buy_orders-sell_orders);
+
+            // what's our average buy price per BTC?
+            var avg_buy = bought/buy_orders;
+
+            //what's our average sell price per BTC?
+            var avg_sell = sold/sell_orders
+
             //console.log(last);
             self.order = last.OrderTypeAsString;
             self.price = parseFloat(last.Price);
@@ -93,6 +105,8 @@ sim1.prototype.update = function() {
             self.fail_total = fail_total;
             self.usd = usd;
             self.btc = btc;
+            self.avg_buy = avg_buy;
+            self.avg_sell = avg_sell;
             self.last_arbitrage = last.Origin.toString().substr(25);
             self.updated = last.LastUpdate;
         });
