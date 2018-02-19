@@ -89,8 +89,6 @@ stats.prototype.update = function() {
               console.log('avg_sell: ', avg_sell);
               i++
             }
-
-
             self.total = total;
             self.buy_orders = buy_orders;
             self.sell_orders = sell_orders;
