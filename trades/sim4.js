@@ -43,11 +43,22 @@ sim4.prototype.update = function() {
 
         response.on('end', function() {
             var data = JSON.parse(str);
+
+            // lets grab info about the last order
             var last = data.SpotOrders.pop();
+
+            // how many orders in total?
             var total = self.total = data.SpotOrders.length;
+
+            // amount of successful buy_orders?
             var buy_orders = 0;
+
+            // amount of successful sell_orders?
             var sell_orders = 0;
+
+            // counter variable
             var i = 0;
+
             var check = "";
             var failed = 0;
             var OrderStatus = "";
@@ -74,12 +85,21 @@ sim4.prototype.update = function() {
               }
               i++
             }
+            //how many of our orders complete?
             var success = parseFloat(1-(failed/total));
+
             //how much more USD have we sold than bought?
             var usd = parseFloat(sold-bought);
+
             //how much more BTC have we bought than sold?
             var btc = parseFloat(buy_orders-sell_orders);
-            //console.log(last);
+
+            // what's our average buy price per BTC?
+            var avg_buy = bought/buy_orders;
+
+            //what's our average sell price per BTC?
+            var avg_sell = sold/sell_orders
+
             self.order = last.OrderTypeAsString;
             self.price = parseFloat(last.Price);
             self.amount = last.Amount;
@@ -93,6 +113,8 @@ sim4.prototype.update = function() {
             self.fail_total = fail_total;
             self.usd = usd;
             self.btc = btc;
+            self.avg_buy = avg_buy;
+            self.avg_sell = avg_sell;
             self.last_arbitrage = last.Origin.toString().substr(25);
             self.updated = last.LastUpdate;
         });
