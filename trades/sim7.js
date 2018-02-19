@@ -73,7 +73,7 @@ sim7.prototype.update = function() {
 				price = data.SpotOrders[i].Price;
 				//console.log(check);
 				if (orderStatus != "Completed") {
-					check = "No";
+					//check = "No";
 					failed = failed + 1;
 					fail_total = fail_total + price;
 				}
