@@ -83,10 +83,10 @@ stats.prototype.update = function() {
               console.log('failed: ', failed);
               fail_total = fail_total+exchange.fail_total;
               console.log('fail_total: ', fail_total);
-              avg_buy = avg_buy+exchange.avg_buy;
-              console.log('avg_buy: ', avg_buy);
-              avg_sell = avg_sell+exchange.avg_sell;
-              console.log('avg_sell: ', avg_sell);
+              //avg_buy = avg_buy+exchange.avg_buy;
+              //console.log('avg_buy: ', avg_buy);
+              //avg_sell = avg_sell+exchange.avg_sell;
+              //console.log('avg_sell: ', avg_sell);
               i++
             }
             self.total = total;
@@ -99,8 +99,8 @@ stats.prototype.update = function() {
             self.fail_total = fail_total;
             self.usd = usd;
             self.btc = btc;
-            self.avg_buy = avg_buy;
-            self.avg_sell = avg_sell;
+            self.avg_buy = buy_total/buy_orders;
+            self.avg_sell = sell_total/sell_orders;
             self.updated = new Date();
         });
     }
