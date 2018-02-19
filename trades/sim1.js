@@ -45,11 +45,22 @@ sim1.prototype.update = function() {
 
         response.on('end', function() {
             var data = JSON.parse(str);
+
+            // lets grab info about the last order
             var last = data.SpotOrders.pop();
+
+            // how many orders in total?
             var total = self.total = data.SpotOrders.length;
+
+            // amount of successful buy_orders?
             var buy_orders = 0;
+
+            // amount of successful sell_orders?
             var sell_orders = 0;
+
+            // counter variable
             var i = 0;
+
             var check = "";
             var failed = 0;
             var OrderStatus = "";
@@ -90,8 +101,7 @@ sim1.prototype.update = function() {
 
             //what's our average sell price per BTC?
             var avg_sell = sold/sell_orders
-
-            //console.log(last);
+            
             self.order = last.OrderTypeAsString;
             self.price = parseFloat(last.Price);
             self.amount = last.Amount;
