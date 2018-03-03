@@ -115,7 +115,15 @@ var TradeMonitor = function() {
 	 *  Create the routing table entries + handlers for the application.
 	 */
 	self.createRoutes = function() {
-		self.routes = [];
+		self.routes = {};
+
+		self.routes['history'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify(
+				[self.bots.trades]
+			));
+		};
 
 		self.routes['/trades'] = function(req, res) {
 			res.setHeader('Content-Type', 'application/json');
@@ -130,14 +138,7 @@ var TradeMonitor = function() {
 			}));
 		};
 
-		self.routes['tradeshistory'] = function(req, res) {
-			res.setHeader('Content-Type', 'application/json');
-			res.setHeader('Cache-Control', 'no-cache, no-store');
-			res.end(JSON.stringify(
-				[self.bots.trades]
-			));
-			res.send('history');
-		};
+
 	};
 
 
