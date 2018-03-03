@@ -134,6 +134,14 @@ var TradeMonitor = function() {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.bots.total,
+					sort: asc,
+					field: AddedTime
+				},
 				data: self.bots.trades
 			}));
 		};

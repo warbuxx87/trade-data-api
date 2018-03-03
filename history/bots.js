@@ -29,6 +29,8 @@ bots.prototype.update = function() {
 		response.on('end', function() {
 			var data = JSON.parse(str);
 			var trades = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder;
+			var total = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder.length;
+			self.total = total;
 			self.updated = new Date(); // grab all completed orders
 			self.trades = trades;
 
