@@ -39,7 +39,7 @@ var sim7 = require('./trades/sim7');
 var stats = require('./trades/stats');
 
 // Aggregated trades
-var bots = require('./trades/bots');
+var bots = require('./history/bots');
 
 /**
  *  Define the application.
@@ -117,7 +117,7 @@ var TradeMonitor = function() {
 	self.createRoutes = function() {
 		self.routes = {};
 
-		self.routes['history'] = function(req, res) {
+		self.routes['/history'] = function(req, res) {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify(
@@ -215,7 +215,6 @@ var TradeMonitor = function() {
 
 		// aggregate stats
 		self.stats = new stats();
-
 		self.bots = new bots();
 	};
 
