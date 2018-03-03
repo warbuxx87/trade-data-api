@@ -35,6 +35,8 @@ var sim5 = require('./trades/sim5');
 var sim6 = require('./trades/sim6');
 var sim7 = require('./trades/sim7');
 
+var gemini = require('./exchanges/gemini');
+
 // Aggregated Stats
 var stats = require('./trades/stats');
 
@@ -158,7 +160,7 @@ var TradeMonitor = function() {
 					sort: "desc",
 					field: "AddedTime"
 				},
-				data: self.sim1.data.SpotOrders
+				data: self.gemini.SpotOrders
 			}));
 		};
 
@@ -236,6 +238,8 @@ var TradeMonitor = function() {
 		self.sim5 = new sim5();
 		self.sim6 = new sim6();
 		self.sim7 = new sim7();
+
+		self.gemini = new gemini();
 
 		// aggregate stats
 		self.stats = new stats();
