@@ -120,9 +120,9 @@ var TradeMonitor = function() {
 		self.routes['/history'] = function(req, res) {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
-			res.end(JSON.stringify(
-				[self.bots.trades]
-			));
+			res.end(JSON.stringify({
+				bots: [self.bots]
+			}));
 		};
 
 		self.routes['/trades'] = function(req, res) {
