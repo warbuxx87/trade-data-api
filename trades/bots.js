@@ -28,17 +28,18 @@ bots.prototype.update = function() {
 		});
 
 		response.on('end', function() {
-				var data = JSON.parse(str);
-				var trades = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder); // grab all completed orders
-			self.trades = trades; self.updated = new Date();
+			var data = JSON.parse(str);
+			var trades = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder; // grab all completed orders
+			self.trades = trades;
+			self.updated = new Date();
 		});
-}
+	}
 
-https.request(options, callback).end();
+	https.request(options, callback).end();
 
-setTimeout(function() {
-	self.update();
-}, self.timeout);
+	setTimeout(function() {
+		self.update();
+	}, self.timeout);
 };
 
 module.exports = bots;
