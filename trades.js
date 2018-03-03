@@ -146,6 +146,22 @@ var TradeMonitor = function() {
 			}));
 		};
 
+		self.routes['/exchange'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.sim1.total,
+					sort: "desc",
+					field: "AddedTime"
+				},
+				data: self.sim1.data.SpotOrders
+			}));
+		};
+
 
 	};
 
