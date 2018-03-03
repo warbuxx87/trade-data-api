@@ -126,8 +126,7 @@ var TradeMonitor = function() {
 					self.bot15, self.bot16, self.bot17, self.bot18, self.bot19, self.bot20
 				],
 				exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7],
-				stats: [self.stats],
-				history: self.bots.trades
+				stats: [self.stats]
 			}));
 		};
 
