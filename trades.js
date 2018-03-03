@@ -127,14 +127,7 @@ var TradeMonitor = function() {
 				],
 				exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7],
 				stats: [self.stats],
-			}));
-		};
-
-		self.routes['/trades'] = function(req, res) {
-			res.setHeader('Content-Type', 'application/json');
-			res.setHeader('Cache-Control', 'no-cache, no-store');
-			res.end(JSON.stringify({
-				bots: [self.bots]
+				history: [self.bots],
 			}));
 		};
 
