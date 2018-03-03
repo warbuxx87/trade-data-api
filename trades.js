@@ -117,7 +117,7 @@ var TradeMonitor = function() {
 	self.createRoutes = function() {
 		self.routes = {};
 
-		self.routes['/trades'] = function(req, res) {
+		self.routes['/'] = function(req, res) {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify({
@@ -131,10 +131,14 @@ var TradeMonitor = function() {
 			}));
 		};
 
-		self.routes['/'] = function(req, res) {
-			res.setHeader('Content-Type', 'text/html');
-			res.send(self.cache_get('index.html'));
+		self.routes['history/'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				self.bots.trades
+			}));
 		};
+
 	};
 
 	/**
