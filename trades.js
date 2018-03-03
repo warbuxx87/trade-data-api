@@ -134,7 +134,7 @@ var TradeMonitor = function() {
 		self.routes['history/'] = function(req, res) {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
-			res.end(self.bots.trades);
+			res.end(JSON.stringify(self.bots.trades));
 		};
 
 	};
