@@ -139,7 +139,7 @@ var TradeMonitor = function() {
 					pages: 1,
 					perpage: -1,
 					total: self.bots.total,
-					sort: "dsc",
+					sort: "desc",
 					field: "AddedTime"
 				},
 				data: self.bots.trades
