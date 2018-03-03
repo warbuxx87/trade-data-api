@@ -139,8 +139,8 @@ var TradeMonitor = function() {
 					pages: 1,
 					perpage: -1,
 					total: self.bots.total,
-					sort: asc,
-					field: AddedTime
+					sort: "asc",
+					field: "AddedTime"
 				},
 				data: self.bots.trades
 			}));
