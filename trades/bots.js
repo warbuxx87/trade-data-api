@@ -1,7 +1,6 @@
 const https = require('https');
 
 function bots() {
-	this = [];
 	this.updated = new Date(2000, 1, 1);
 	this.timeout = 5000;
 	try {
