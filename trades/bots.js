@@ -1,7 +1,7 @@
 const https = require('https');
 
 function bots() {
-	this.trades = [];
+	this = [];
 	this.updated = new Date(2000, 1, 1);
 	this.timeout = 5000;
 	try {
@@ -30,7 +30,7 @@ bots.prototype.update = function() {
 		response.on('end', function() {
 			var data = JSON.parse(str);
 			var trades = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder; // grab all completed orders
-			self.trades = trades;
+			self = trades;
 			self.updated = new Date();
 		});
 	}
