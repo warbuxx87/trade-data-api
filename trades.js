@@ -148,7 +148,7 @@ var TradeMonitor = function() {
 			}));
 		};
 
-		self.routes['/exchange'] = function(req, res) {
+		self.routes['/exchange/gemini'] = function(req, res) {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify({
