@@ -30,6 +30,8 @@ sim1.prototype.update = function() {
 		response.on('end', function() {
 			var data = JSON.parse(str);
 
+			var SpotOrders = data.SpotOrders;
+
 			// lets grab info about the last order
 			var last = data.SpotOrders.pop();
 
