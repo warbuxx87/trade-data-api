@@ -115,108 +115,108 @@ var TradeMonitor = function() {
 	 *  Create the routing table entries + handlers for the application.
 	 */
 	self.createRoutes = function() {
-		self.routes = {
+		self.routes = [];
 
-			self.route['/trades'] = function(req, res) {
-				res.setHeader('Content-Type', 'application/json');
-				res.setHeader('Cache-Control', 'no-cache, no-store');
-				res.end(JSON.stringify({
-					bots: [self.bot1, self.bot2, self.bot3, self.bot4, self.bot5, self.bot6, self.bot7,
-						self.bot8, self.bot9, self.bot10, self.bot11, self.bot12, self.bot13, self.bot14,
-						self.bot15, self.bot16, self.bot17, self.bot18, self.bot19, self.bot20
-					],
-					exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7],
-					stats: [self.stats]
-				}));
-			};
-
-			self.route['/history'] = function(req, res) {
-				res.setHeader('Content-Type', 'application/json');
-				res.setHeader('Cache-Control', 'no-cache, no-store');
-				res.end(JSON.stringify(
-					[self.bots.trades]
-				));
-				res.send('history');
-			};
+		self.routes['/trades'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				bots: [self.bot1, self.bot2, self.bot3, self.bot4, self.bot5, self.bot6, self.bot7,
+					self.bot8, self.bot9, self.bot10, self.bot11, self.bot12, self.bot13, self.bot14,
+					self.bot15, self.bot16, self.bot17, self.bot18, self.bot19, self.bot20
+				],
+				exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7],
+				stats: [self.stats]
+			}));
 		};
-	};
 
-	/**
-	 *  Initialize the server (express) and create the routes and register
-	 *  the handlers.
-	 */
-	self.initializeServer = function() {
-		self.createRoutes();
-		self.app = express();
+		self.routes['/history'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify(
+				[self.bots.trades]
+			));
+			res.send('history');
+		};
+	}
+};
 
-		self.app.use(express.static('public'));
+/**
+ *  Initialize the server (express) and create the routes and register
+ *  the handlers.
+ */
+self.initializeServer = function() {
+	self.createRoutes();
+	self.app = express();
 
-		//  Add handlers for the app (from the routes).
-		for (var r in self.routes) {
-			self.app.get(r, self.routes[r]);
+	self.app.use(express.static('public'));
 
-		}
-	};
+	//  Add handlers for the app (from the routes).
+	for (var r in self.routes) {
+		self.app.get(r, self.routes[r]);
 
-
-	/**
-	 *  Initializes the application.
-	 */
-	self.initialize = function() {
-		self.setupVariables();
-		self.setupTerminationHandlers();
-
-		// Create the express server and routes.
-		self.initializeServer();
-	};
+	}
+};
 
 
-	/**
-	 *  Start the server (starts up the sample application).
-	 */
-	self.start = function() {
-		//  Start the app on the specific interface (and port).
-		self.app.listen(self.port, self.ipaddress, function() {
-			console.log('%s: Node server started on %s:%d ...',
-				Date(Date.now()), self.ipaddress, self.port);
-		});
+/**
+ *  Initializes the application.
+ */
+self.initialize = function() {
+	self.setupVariables();
+	self.setupTerminationHandlers();
 
-		//bots
-		self.bot1 = new bot1();
-		self.bot2 = new bot2();
-		self.bot3 = new bot3();
-		self.bot4 = new bot4();
-		self.bot5 = new bot5();
-		self.bot6 = new bot6();
-		self.bot7 = new bot7();
-		self.bot8 = new bot8();
-		self.bot9 = new bot9();
-		self.bot10 = new bot10();
-		self.bot11 = new bot11();
-		self.bot12 = new bot12();
-		self.bot13 = new bot13();
-		self.bot14 = new bot14();
-		self.bot15 = new bot15();
-		self.bot16 = new bot16();
-		self.bot17 = new bot17();
-		self.bot18 = new bot18();
-		self.bot19 = new bot19();
-		self.bot20 = new bot20();
+	// Create the express server and routes.
+	self.initializeServer();
+};
 
-		// sim exchanges for bots
-		self.sim1 = new sim1();
-		self.sim2 = new sim2();
-		self.sim3 = new sim3();
-		self.sim4 = new sim4();
-		self.sim5 = new sim5();
-		self.sim6 = new sim6();
-		self.sim7 = new sim7();
 
-		// aggregate stats
-		self.stats = new stats();
+/**
+ *  Start the server (starts up the sample application).
+ */
+self.start = function() {
+	//  Start the app on the specific interface (and port).
+	self.app.listen(self.port, self.ipaddress, function() {
+		console.log('%s: Node server started on %s:%d ...',
+			Date(Date.now()), self.ipaddress, self.port);
+	});
 
-		self.bots = new bots();
-	};
+	//bots
+	self.bot1 = new bot1();
+	self.bot2 = new bot2();
+	self.bot3 = new bot3();
+	self.bot4 = new bot4();
+	self.bot5 = new bot5();
+	self.bot6 = new bot6();
+	self.bot7 = new bot7();
+	self.bot8 = new bot8();
+	self.bot9 = new bot9();
+	self.bot10 = new bot10();
+	self.bot11 = new bot11();
+	self.bot12 = new bot12();
+	self.bot13 = new bot13();
+	self.bot14 = new bot14();
+	self.bot15 = new bot15();
+	self.bot16 = new bot16();
+	self.bot17 = new bot17();
+	self.bot18 = new bot18();
+	self.bot19 = new bot19();
+	self.bot20 = new bot20();
+
+	// sim exchanges for bots
+	self.sim1 = new sim1();
+	self.sim2 = new sim2();
+	self.sim3 = new sim3();
+	self.sim4 = new sim4();
+	self.sim5 = new sim5();
+	self.sim6 = new sim6();
+	self.sim7 = new sim7();
+
+	// aggregate stats
+	self.stats = new stats();
+
+	self.bots = new bots();
+};
 
 }; /*  Trade Monitor.  */
 
