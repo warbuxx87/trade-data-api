@@ -115,29 +115,30 @@ var TradeMonitor = function() {
 	 *  Create the routing table entries + handlers for the application.
 	 */
 	self.createRoutes = function() {
-		self.routes = {};
+		self.routes = {
 
-		self.routes['/trades'] = function(req, res) {
-			res.setHeader('Content-Type', 'application/json');
-			res.setHeader('Cache-Control', 'no-cache, no-store');
-			res.end(JSON.stringify({
-				bots: [self.bot1, self.bot2, self.bot3, self.bot4, self.bot5, self.bot6, self.bot7,
-					self.bot8, self.bot9, self.bot10, self.bot11, self.bot12, self.bot13, self.bot14,
-					self.bot15, self.bot16, self.bot17, self.bot18, self.bot19, self.bot20
-				],
-				exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7],
-				stats: [self.stats]
-			}));
+			self.route['/trades'] = function(req, res) {
+				res.setHeader('Content-Type', 'application/json');
+				res.setHeader('Cache-Control', 'no-cache, no-store');
+				res.end(JSON.stringify({
+					bots: [self.bot1, self.bot2, self.bot3, self.bot4, self.bot5, self.bot6, self.bot7,
+						self.bot8, self.bot9, self.bot10, self.bot11, self.bot12, self.bot13, self.bot14,
+						self.bot15, self.bot16, self.bot17, self.bot18, self.bot19, self.bot20
+					],
+					exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7],
+					stats: [self.stats]
+				}));
+			};
+
+			self.route['/history'] = function(req, res) {
+				res.setHeader('Content-Type', 'application/json');
+				res.setHeader('Cache-Control', 'no-cache, no-store');
+				res.end(JSON.stringify(
+					[self.bots.trades]
+				));
+				res.send('history');
+			};
 		};
-
-		self.routes['/trades/history'] = function(req, res) {
-			res.setHeader('Content-Type', 'application/json');
-			res.setHeader('Cache-Control', 'no-cache, no-store');
-			res.end(JSON.stringify(
-				[self.bots.trades]
-			));
-		};
-
 	};
 
 	/**
