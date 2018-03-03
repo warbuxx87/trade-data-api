@@ -131,6 +131,14 @@ var TradeMonitor = function() {
 			}));
 		};
 
+		self.routes['/bots'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				data: self.bots.trades
+			}));
+		};
+
 
 	};
 
