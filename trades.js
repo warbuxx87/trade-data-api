@@ -130,7 +130,7 @@ var TradeMonitor = function() {
 			}));
 		};
 
-		self.routes['history/'] = function(req, res) {
+		self.routes['/history'] = function(req, res) {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify(
