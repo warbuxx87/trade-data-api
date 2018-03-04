@@ -28,14 +28,21 @@ var bot20 = require('./trades/bot20');
 
 // Simulated exchanges
 var sim1 = require('./trades/sim1');
-var sim2 = require('./trades/sim2');
-var sim3 = require('./trades/sim3');
-var sim4 = require('./trades/sim4');
-var sim5 = require('./trades/sim5');
-var sim6 = require('./trades/sim6');
-var sim7 = require('./trades/sim7');
-
 var gemini = require('./exchanges/gemini');
+var sim2 = require('./trades/sim2');
+var bittrex = require('./exchanges/bittrex');
+var sim3 = require('./trades/sim3');
+var bitstamp = require('./exchanges/bitstamp');
+var sim4 = require('./trades/sim4');
+var kraken = require('./exchanges/kraken');
+var sim5 = require('./trades/sim5');
+var bitfinex = require('./exchanges/bitfinex');
+var sim6 = require('./trades/sim6');
+var bittrex = require('./exchanges/bittrex');
+var sim7 = require('./trades/sim7');
+var binance = require('./exchanges/binance');
+
+
 
 // Aggregated Stats
 var stats = require('./trades/stats');
@@ -161,6 +168,102 @@ var TradeMonitor = function() {
 					field: "AddedTime"
 				},
 				data: self.gemini.SpotOrders
+			}));
+		};
+
+		self.routes['/exchanges/gdax'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.sim2.total,
+					sort: "desc",
+					field: "AddedTime"
+				},
+				data: self.gdax.SpotOrders
+			}));
+		};
+
+		self.routes['/exchanges/bitstamp'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.sim3.total,
+					sort: "desc",
+					field: "AddedTime"
+				},
+				data: self.bitstamp.SpotOrders
+			}));
+		};
+
+		self.routes['/exchanges/kraken'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.sim4.total,
+					sort: "desc",
+					field: "AddedTime"
+				},
+				data: self.kraken.SpotOrders
+			}));
+		};
+
+		self.routes['/exchanges/bitfinex'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.sim5.total,
+					sort: "desc",
+					field: "AddedTime"
+				},
+				data: self.bitfinex.SpotOrders
+			}));
+		};
+
+		self.routes['/exchanges/bittrex'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.sim6.total,
+					sort: "desc",
+					field: "AddedTime"
+				},
+				data: self.bittrex.SpotOrders
+			}));
+		};
+
+		self.routes['/exchanges/binance'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.sim7.total,
+					sort: "desc",
+					field: "AddedTime"
+				},
+				data: self.binance.SpotOrders
 			}));
 		};
 

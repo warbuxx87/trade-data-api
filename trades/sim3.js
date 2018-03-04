@@ -2,20 +2,6 @@ const https = require('https');
 
 function sim3() {
 	this.name = "Bitstamp";
-	this.order = 0;
-	this.price = 0;
-	this.amount = 0;
-	this.total = 0;
-	this.buy_orders = 0;
-	this.sell_orders = 0;
-	this.failed = 0;
-	this.success = 0;
-	this.buy_total = 0;
-	this.sell_total = 0;
-	this.fail_total = 0;
-	this.usd = 0;
-	this.btc = 0;
-	this.last_arbitrage = 0;
 	this.updated = new Date(2000, 1, 1);
 	this.timeout = 5000;
 	try {
