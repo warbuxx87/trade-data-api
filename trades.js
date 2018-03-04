@@ -144,7 +144,7 @@ var TradeMonitor = function() {
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify({
 				meta: {
-					name: "BitStamp Binance"
+					name: "BitStamp Binance",
 					page: 1,
 					pages: 1,
 					perpage: -1,
