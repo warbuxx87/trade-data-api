@@ -1,8 +1,9 @@
 #!/bin/env node
 
-var toobusy = require('toobusy-js');
-var express = require('express');
-var fs = require('fs');
+const toobusy = require('toobusy-js');
+const express = require('express');
+const paginate = require('express-paginate');
+const fs = require('fs');
 
 // Bot Performance
 var bot1 = require('./trades/bot1');
