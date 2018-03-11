@@ -2,7 +2,7 @@ const https = require('https');
 
 function binance() {
 	this.name = "Binance";
-	this.updated = new Date(2000, 1, 1);
+	this.updated = new Date();
 	this.timeout = 5000;
 	try {
 		this.update();

@@ -2,12 +2,13 @@ const https = require('https');
 
 function kraken() {
 	this.name = "Kraken";
-	this.updated = new Date(2000, 1, 1);
-	this.timeout = 5000;
+	this.updated = new Date();
+	this.timeout = 2000;
 	try {
 		this.update();
 	} catch (e) {
 		console.log(e);
+		this.timeout = 20000;
 		setTimeout(this.update.bind(this), this.timeout);
 	}
 }
