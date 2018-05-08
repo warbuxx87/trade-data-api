@@ -3,7 +3,7 @@ const https = require('https');
 function sim2() {
 	this.name = "GDAX";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 5000;
+	this.timeout = 60000;
 	try {
 		this.update();
 	} catch (e) {
