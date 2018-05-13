@@ -36,7 +36,7 @@ binance.prototype.update = function() {
 	}
 
 	//https.request(options, callback).end();
-	fs.readFile('/root/HTS/Simulations/binance.json').end();
+	fs.readFile('/root/HTS/Simulations/binance.json', callback).end();
 
 	setTimeout(function() {
 		self.update();
