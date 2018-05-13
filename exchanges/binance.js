@@ -40,7 +40,7 @@ callback = function(err, data) {
 
 //https.request(options, callback).end();
 fs.readFile('/root/HTS/Simulations/binance.json', callback(data.toString)).end();
-});;
+});
 
 setTimeout(function() {
 	self.update();
