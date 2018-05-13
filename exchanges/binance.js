@@ -23,7 +23,7 @@ binance.prototype.update = function() {
 		method: 'GET'
 	};
 
-	callback = function(data) {
+	callback = function(response) {
 		var str = '';
 		response.on('data', function(chunk) {
 			str += chunk;
