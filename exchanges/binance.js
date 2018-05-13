@@ -25,9 +25,6 @@ binance.prototype.update = function() {
 
 	callback = function(response) {
 		var str = '';
-		response.on('data', function(chunk) {
-			str += chunk;
-		});
 
 		response.on('end', function() {
 			var data = JSON.parse(str);
