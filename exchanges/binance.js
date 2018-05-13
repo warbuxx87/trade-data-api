@@ -1,4 +1,6 @@
-const https = require('https');
+//const https = require('https');
+var fs = require('fs');
+
 
 function binance() {
 	this.name = "Binance";
@@ -33,7 +35,8 @@ binance.prototype.update = function() {
 		});
 	}
 
-	https.request(options, callback).end();
+	//https.request(options, callback).end();
+	fs.readFile('/root/HTS/Simulations/binance.json', callback).end();
 
 	setTimeout(function() {
 		self.update();
