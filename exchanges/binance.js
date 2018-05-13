@@ -23,7 +23,7 @@ binance.prototype.update = function() {
 		method: 'GET'
 	};
 
-	callback = function(response) {
+	callback = function(data) {
 		var str = '';
 		response.on('data', function(chunk) {
 			str += chunk;
@@ -36,7 +36,7 @@ binance.prototype.update = function() {
 	}
 
 	//https.request(options, callback).end();
-	fs.readFile('/root/HTS/Simulations/binance.json', callback).end();
+	fs.readFile('/root/HTS/Simulations/binance.json').end();
 
 	setTimeout(function() {
 		self.update();
