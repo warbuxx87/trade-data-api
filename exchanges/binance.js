@@ -23,21 +23,28 @@ binance.prototype.update = function() {
 		method: 'GET'
 	};
 
-	callback = function(response) {
+	callback = function(err, data) {
 		var str = '';
+		if (err) {
+			throw err;
+		}
+		data.on('data', function(chunk) {
+			str += chunk;
+		});
 
-		response.on('end', function() {
+		data.on('end', function() {
 			var data = JSON.parse(str);
 			self.SpotOrders = data.SpotOrders;
 		});
 	}
 
 	//https.request(options, callback).end();
-	fs.readFile('/root/HTS/Simulations/binance.json', callback).end();
+	fs.readFile('/root/HTS/Simulations/binance.json', callback(data.toString).end();
+	});;
 
-	setTimeout(function() {
-		self.update();
-	}, self.timeout);
+setTimeout(function() {
+	self.update();
+}, self.timeout);
 };
 
 module.exports = binance;
