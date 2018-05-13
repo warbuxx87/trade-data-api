@@ -15,28 +15,16 @@ function binance() {
 
 binance.prototype.update = function() {
 	var self = this;
-	var options = {
-		host: 'data.alkemi.ai',
-		path: '/Simulations/binance.json',
-		port: 443,
-		method: 'GET'
-	};
+	var data = '';
+	var readStream = fs.createReadStream('/root/HTS/Simulations/binance.json', 'utf8');
 
-
-	callback = function(response) {
-		var data = '';
-		response.on('data', function(chunk) {
-			data += chunk;
-		});
-
-		response.on('end', function() {
-			var data = JSON.parse(str);
-			self.SpotOrders = data.SpotOrders;
-		});
-	}
-
-	//https.request(options, callback).end();
-	fs.createReadStream('/root/HTS/Simulations/binance.json', 'utf8', callback).end();
+	readStream.on('data', function(chunk) {
+		data += chunk;
+	}).on('end', function() {
+		console.log(data);
+		var data = JSON.parse(str);
+		self.SpotOrders = data.SpotOrders;
+	});
 
 	setTimeout(function() {
 		self.update();
