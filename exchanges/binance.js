@@ -1,5 +1,4 @@
 const https = require('https');
-var fs = require('fs');
 
 function binance() {
 	this.name = "Binance";
@@ -15,16 +14,26 @@ function binance() {
 
 binance.prototype.update = function() {
 	var self = this;
-	var data = '';
-	var readStream = fs.createReadStream('/root/HTS/Simulations/binance.json', 'utf8');
+	var options = {
+		host: 'data.alkemi.ai',
+		path: '/Simulations/binance.json',
+		port: 443,
+		method: 'GET'
+	};
 
-	readStream.on('data', function(chunk) {
-		data += chunk;
-	}).on('end', function() {
-		console.log(data);
-		var data = JSON.parse(str);
-		self.SpotOrders = data.SpotOrders;
-	});
+	callback = function(response) {
+		var str = '';
+		response.on('data', function(chunk) {
+			str += chunk;
+		});
+
+		response.on('end', function() {
+			var data = JSON.parse(str);
+			self.SpotOrders = data.SpotOrders;
+		});
+	}
+
+	https.request(options, callback).end();
 
 	setTimeout(function() {
 		self.update();
