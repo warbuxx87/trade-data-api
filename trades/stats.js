@@ -1,4 +1,19 @@
 const https = require('https');
+var i = 0;
+var exchange = "";
+var total = 0;
+var buy_total = 0;
+var sell_total = 0;
+var buy_orders = 0;
+var sell_orders = 0;
+var usd = 0;
+var btc = 0;
+var success = 0;
+var failed = 0;
+var fail_total = 0;
+var avg_buy = 0;
+var avg_sell = 0;
+var name = name;
 
 function stats() {
 	this.name = "Stats";
@@ -27,21 +42,7 @@ stats.prototype.update = function() {
 			str += chunk;
 		});
 
-		var i = 0;
-		var exchange = "";
-		var total = 0;
-		var buy_total = 0;
-		var sell_total = 0;
-		var buy_orders = 0;
-		var sell_orders = 0;
-		var usd = 0;
-		var btc = 0;
-		var success = 0;
-		var failed = 0;
-		var fail_total = 0;
-		var avg_buy = 0;
-		var avg_sell = 0;
-		var name = name;
+
 
 		response.on('end', function() {
 			var data = JSON.parse(str);
