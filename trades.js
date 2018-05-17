@@ -372,21 +372,21 @@ var TradeMonitor = function() {
 
 		// sim exchanges for bots
 		self.sim1 = new sim1();
-		self.gemini = new gemini();
+		//self.gemini = new gemini();
 		self.sim2 = new sim2();
-		self.gdax = new gdax();
+		//self.gdax = new gdax();
 		self.sim3 = new sim3();
-		self.bitstamp = new bitstamp();
+		//self.bitstamp = new bitstamp();
 		self.sim4 = new sim4();
-		self.kraken = new kraken();
+		//self.kraken = new kraken();
 		self.sim5 = new sim5();
-		self.bitfinex = new bitfinex();
+		//self.bitfinex = new bitfinex();
 		self.sim6 = new sim6();
-		self.bittrex = new bittrex();
+		//self.bittrex = new bittrex();
 		self.sim7 = new sim7();
-		self.binance = new binance();
+		//self.binance = new binance();
 		self.sim8 = new sim8();
-		self.hitbtc = new hitbtc();
+		//self.hitbtc = new hitbtc();
 
 		// aggregate stats
 		self.stats = new stats();
