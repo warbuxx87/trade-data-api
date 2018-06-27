@@ -106,7 +106,8 @@ sim5.prototype.update = function() {
 			self.btc = btc;
 			self.avg_buy = avg_buy;
 			self.avg_sell = avg_sell;
-			self.last_arbitrage = last.Origin.toString().substr(25);
+			self.last_arbitrage = last.Origin.toString().substr(25)
+			self.last_arbitrage = self.last_arbitrage.replace('Bitfinex', '');
 			self.updated = last.LastUpdate;
 		});
 	}
