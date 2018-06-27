@@ -108,7 +108,7 @@ sim1.prototype.update = function() {
 			self.btc = btc;
 			self.avg_buy = avg_buy;
 			self.avg_sell = avg_sell;
-			self.last_arbitrage = last.Origin.toString().substr(25);
+			self.last_arbitrage = last.Origin.toString().substr(25).replace('gemini', '');
 			self.updated = last.LastUpdate;
 		});
 	}
