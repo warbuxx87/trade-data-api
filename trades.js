@@ -363,7 +363,7 @@ var TradeMonitor = function() {
 
 		//bots
 		self.bot1 = new bot1();
-		self.bot1 = new bot1_all();
+		//self.bot1 = new bot1_all();
 		self.bot2 = new bot2();
 		self.bot3 = new bot3();
 		self.bot4 = new bot4();
