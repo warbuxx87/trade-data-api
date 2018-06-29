@@ -300,6 +300,22 @@ var TradeMonitor = function() {
 			}));
 		};
 
+		self.routes['/bots/1'] = function(req, res) {
+			res.setHeader('Content-Type', 'application/json');
+			res.setHeader('Cache-Control', 'no-cache, no-store');
+			res.end(JSON.stringify({
+				meta: {
+					page: 1,
+					pages: 1,
+					perpage: -1,
+					total: self.bot1.trades,
+					sort: "desc",
+					field: "AddedTime"
+				},
+				data: self.hitbtc.SpotOrders
+			}));
+		};
+
 
 	};
 
