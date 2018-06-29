@@ -2,8 +2,20 @@ const https = require('https');
 
 function bot1() {
 	this.name = "";
-	this.updated = new Date(2000, 1, 1);
+	this.updated = new Date();
 	this.timeout = 5000;
+	try {
+		this.update();
+	} catch (e) {
+		console.log(e);
+		setTimeout(this.update.bind(this), this.timeout);
+	}
+}
+
+function bot1_all() {
+	this.name = "";
+	this.updated = new Date();
+	this.timeout = 120000;
 	try {
 		this.update();
 	} catch (e) {
@@ -56,4 +68,37 @@ bot1.prototype.update = function() {
 	}, self.timeout);
 };
 
-module.exports = bot1;
+
+
+bot1_all.prototype.update = function() {
+	var self = this;
+	var options = {
+		host: 'data.alkemi.ai',
+		path: '/CustomBots/bot1.json',
+		port: 443,
+		method: 'GET'
+	};
+
+	callback = function(response) {
+		var str = '';
+		response.on('data', function(chunk) {
+			str += chunk;
+		});
+
+		response.on('end', function() {
+			var data = JSON.parse(str);
+			var orders = data.InterExchangeArbitrageBot.SpotOrders;
+			self.name = data.InterExchangeArbitrageBot.Name;
+			self.updated = new Date();
+			self.orders = orders;
+		});
+	}
+
+	https.request(options, callback).end();
+
+	setTimeout(function() {
+		self.update();
+	}, self.timeout);
+};
+
+module.exports = bot1, bot1_all;

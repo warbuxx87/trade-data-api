@@ -305,14 +305,15 @@ var TradeMonitor = function() {
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify({
 				meta: {
+					name: self.bot1.name,
 					page: 1,
 					pages: 1,
 					perpage: -1,
-					total: self.bot1.trades,
+					total: self.bot1.total,
 					sort: "desc",
 					field: "AddedTime"
 				},
-				data: self.bot1
+				data: self.bot1_all.orders;
 			}));
 		};
 
