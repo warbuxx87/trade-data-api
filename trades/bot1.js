@@ -12,18 +12,6 @@ function bot1() {
 	}
 }
 
-function bot1_all() {
-	this.name = "";
-	this.updated = new Date();
-	this.timeout = 120000;
-	try {
-		this.update();
-	} catch (e) {
-		console.log(e);
-		setTimeout(this.update.bind(this), this.timeout);
-	}
-}
-
 bot1.prototype.update = function() {
 	var self = this;
 	var options = {
@@ -58,39 +46,6 @@ bot1.prototype.update = function() {
 			self.fees = fees;
 			self.name = data.InterExchangeArbitrageBot.Name;
 			self.updated = new Date();
-		});
-	}
-
-	https.request(options, callback).end();
-
-	setTimeout(function() {
-		self.update();
-	}, self.timeout);
-};
-
-
-
-bot1_all.prototype.update = function() {
-	var self = this;
-	var options = {
-		host: 'data.alkemi.ai',
-		path: '/CustomBots/bot1.json',
-		port: 443,
-		method: 'GET'
-	};
-
-	callback = function(response) {
-		var str = '';
-		response.on('data', function(chunk) {
-			str += chunk;
-		});
-
-		response.on('end', function() {
-			var data = JSON.parse(str);
-			var orders = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder;
-			self.name = data.InterExchangeArbitrageBot.Name;
-			self.updated = new Date();
-			self.orders = orders;
 		});
 	}
 

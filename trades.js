@@ -300,24 +300,6 @@ var TradeMonitor = function() {
 			}));
 		};
 
-		self.routes['/bots/1'] = function(req, res) {
-			res.setHeader('Content-Type', 'application/json');
-			res.setHeader('Cache-Control', 'no-cache, no-store');
-			res.end(JSON.stringify({
-				meta: {
-					name: self.bot1.name,
-					page: 1,
-					pages: 1,
-					perpage: -1,
-					total: self.bot1.total,
-					sort: "desc",
-					field: "AddedTime"
-				},
-				data: self.bot1_all.orders
-			}));
-		};
-
-
 	};
 
 
@@ -363,7 +345,6 @@ var TradeMonitor = function() {
 
 		//bots
 		self.bot1 = new bot1();
-		//self.bot1 = new bot1_all();
 		self.bot2 = new bot2();
 		self.bot3 = new bot3();
 		self.bot4 = new bot4();
