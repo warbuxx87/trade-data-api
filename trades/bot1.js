@@ -101,4 +101,4 @@ bot1_all.prototype.update = function() {
 	}, self.timeout);
 };
 
-module.exports = bot1, bot1_all;
+module.exports = bot1;
