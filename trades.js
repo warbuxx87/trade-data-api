@@ -313,7 +313,7 @@ var TradeMonitor = function() {
 					sort: "desc",
 					field: "AddedTime"
 				},
-				data: self.bot1_all.orders;
+				data: self.bot1_all.orders
 			}));
 		};
 
