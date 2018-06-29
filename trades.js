@@ -312,7 +312,7 @@ var TradeMonitor = function() {
 					sort: "desc",
 					field: "AddedTime"
 				},
-				data: self.hitbtc.SpotOrders
+				data: self.bot1
 			}));
 		};
 
