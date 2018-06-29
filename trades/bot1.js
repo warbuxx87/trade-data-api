@@ -87,7 +87,7 @@ bot1_all.prototype.update = function() {
 
 		response.on('end', function() {
 			var data = JSON.parse(str);
-			var orders = data.InterExchangeArbitrageBot.SpotOrders;
+			var orders = data.InterExchangeArbitrageBot.CompletedOrders.BaseOrder;
 			self.name = data.InterExchangeArbitrageBot.Name;
 			self.updated = new Date();
 			self.orders = orders;
