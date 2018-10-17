@@ -53,23 +53,23 @@ sim7.prototype.update = function() {
 			var fail_total = 0;
 			var origin;
 			while (total > i) {
-				check = data.SpotOrders[i].OrderTypeAsString;
-				orderStatus = data.SpotOrders[i].OrderStatusAsString;
+				check = data.SpotOrders[i].OrderType;
+				orderStatus = data.SpotOrders[i].OrderStatus;
 				origin = data.SpotOrders[i].Origin;
 				price = data.SpotOrders[i].Price;
 				//console.log(check);
-				if (orderStatus != "Completed") {
+				if (orderStatus != 5) {
 					//check = "No";
 					failed = failed + 1;
 					fail_total = fail_total + price;
 				}
 				//origin checks if corresponding trade completed
 				if (origin != "") {
-					if (check == "Sell") {
+					if (check == 0) {
 						sell_orders = sell_orders + 1;
 						sold = sold + price;
 					}
-					if (check == "Buy") {
+					if (check == 1) {
 						buy_orders = buy_orders + 1;
 						bought = bought + price;
 					}
