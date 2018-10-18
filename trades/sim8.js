@@ -107,7 +107,7 @@ sim8.prototype.update = function() {
 			var doc = {
 				order: last.OrderType,
 				price: parseFloat(last.Price),
-				amount: last.Amount;
+				amount: last.Amount,
 				total: data.Orders.length,
 				buy_orders: buy_orders,
 				sell_orders: sell_orders,
@@ -135,7 +135,7 @@ sim8.prototype.update = function() {
 
 			self.order = check;
 			self.price = parseFloat(last.Price);
-			self.amount = data.Orders.length;
+			self.amount = last.Amount;
 			self.total = data.Orders.length;
 			self.buy_orders = buy_orders;
 			self.sell_orders = sell_orders;
