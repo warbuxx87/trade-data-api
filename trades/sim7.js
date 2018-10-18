@@ -54,6 +54,12 @@ sim7.prototype.update = function() {
 			var origin;
 			while (total > i) {
 				check = data.SpotOrders[i].OrderType;
+				if (check != 0) {
+					check = "Sell";
+					else {
+						check = "Buy";
+					}
+				}
 				orderStatus = data.SpotOrders[i].OrderStatus;
 				origin = data.SpotOrders[i].Origin;
 				price = data.SpotOrders[i].Price;
@@ -65,11 +71,11 @@ sim7.prototype.update = function() {
 				}
 				//origin checks if corresponding trade completed
 				if (origin != "") {
-					if (check == 0) {
+					if (check == "Sell") {
 						sell_orders = sell_orders + 1;
 						sold = sold + price;
 					}
-					if (check == 1) {
+					if (check == "Buy") {
 						buy_orders = buy_orders + 1;
 						bought = bought + price;
 					}

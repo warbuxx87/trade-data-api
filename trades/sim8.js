@@ -60,12 +60,18 @@ sim8.prototype.update = function() {
 			var fail_total = 0;
 			var origin;
 			while (total > i) {
-				check = data.SpotOrders[i].OrderTypeAsString;
-				orderStatus = data.SpotOrders[i].OrderStatusAsString;
+				check = data.SpotOrders[i].OrderType;
+				if (check != 0) {
+					check = "Sell";
+					else {
+						check = "Buy";
+					}
+				}
+				orderStatus = data.SpotOrders[i].OrderStatus;
 				origin = data.SpotOrders[i].Origin;
 				price = data.SpotOrders[i].Price;
 				//console.log(check);
-				if (orderStatus != "Completed") {
+				if (orderStatus != 5) {
 					//check = "No";
 					failed = failed + 1;
 					fail_total = fail_total + price;
@@ -99,7 +105,7 @@ sim8.prototype.update = function() {
 			var avg_sell = sold / sell_orders;
 
 			var doc = {
-				order: last.OrderTypeAsString,
+				order: last.OrderType,
 				price: parseFloat(last.Price),
 				amount: data.SpotOrders.length,
 				total: data.SpotOrders.length,
@@ -127,7 +133,7 @@ sim8.prototype.update = function() {
 			});
 
 
-			self.order = last.OrderTypeAsString;
+			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
 			self.total = data.SpotOrders.length;
