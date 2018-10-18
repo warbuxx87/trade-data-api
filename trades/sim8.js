@@ -135,7 +135,7 @@ sim8.prototype.update = function() {
 
 			self.order = check;
 			self.price = parseFloat(last.Price);
-			self.amount = last.Amount;
+			self.amount = parseFloat(last.Amount);
 			self.total = data.SpotOrders.length;
 			self.buy_orders = buy_orders;
 			self.sell_orders = sell_orders;
