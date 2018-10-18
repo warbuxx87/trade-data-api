@@ -97,7 +97,7 @@ sim5.prototype.update = function() {
 			//what's our average sell price per BTC?
 			var avg_sell = sold / sell_orders;
 
-			self.order = last.OrderType;
+			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
 			self.total = data.SpotOrders.length;
@@ -114,7 +114,7 @@ sim5.prototype.update = function() {
 			self.avg_sell = avg_sell;
 			self.last_arbitrage = last.Origin.toString().substr(25)
 			self.last_arbitrage = self.last_arbitrage.replace('Bitfinex', '');
-			self.updated = last.LastUpdate;
+			self.updated = last.UnixLastUpdate;
 		});
 	}
 
