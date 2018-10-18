@@ -53,12 +53,18 @@ sim6.prototype.update = function() {
 			var fail_total = 0;
 			var origin;
 			while (total > i) {
-				check = data.SpotOrders[i].OrderTypeAsString;
-				orderStatus = data.SpotOrders[i].OrderStatusAsString;
+				check = data.SpotOrders[i].OrderType;
+				if (check != 1) {
+					check = "Sell";
+				}
+				if (check != 0) {
+					check = "Buy";
+				}
+				orderStatus = data.SpotOrders[i].orderStatus;
 				origin = data.SpotOrders[i].Origin;
 				price = data.SpotOrders[i].Price;
 				//console.log(check);
-				if (orderStatus != "Completed") {
+				if (orderStatus != 5) {
 					//check = "No";
 					failed = failed + 1;
 					fail_total = fail_total + price;
@@ -91,7 +97,7 @@ sim6.prototype.update = function() {
 			//what's our average sell price per BTC?
 			var avg_sell = sold / sell_orders;
 
-			self.order = last.OrderTypeAsString;
+			self.order = last.OrderType;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
 			self.total = data.SpotOrders.length;
