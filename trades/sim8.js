@@ -41,7 +41,7 @@ sim8.prototype.update = function() {
 			var last = data.SpotOrders.pop();
 
 			// how many orders in total?
-			var total = self.total = data.Orders.length;
+			var total = self.total = data.SpotOrders.length;
 
 			// amount of successful buy_orders?
 			var buy_orders = 0;
@@ -136,7 +136,7 @@ sim8.prototype.update = function() {
 			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
-			self.total = data.Orders.length;
+			self.total = data.SpotOrders.length;
 			self.buy_orders = buy_orders;
 			self.sell_orders = sell_orders;
 			self.failed = failed;
