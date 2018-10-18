@@ -41,7 +41,7 @@ sim8.prototype.update = function() {
 			var last = data.SpotOrders.pop();
 
 			// how many orders in total?
-			var total = self.total = data.SpotOrders.length;
+			var total = self.total = data.Orders.length;
 
 			// amount of successful buy_orders?
 			var buy_orders = 0;
@@ -107,8 +107,8 @@ sim8.prototype.update = function() {
 			var doc = {
 				order: last.OrderType,
 				price: parseFloat(last.Price),
-				amount: data.SpotOrders.length,
-				total: data.SpotOrders.length,
+				amount: last.Amount;
+				total: data.Orders.length,
 				buy_orders: buy_orders,
 				sell_orders: sell_orders,
 				failed: failed,
@@ -121,7 +121,7 @@ sim8.prototype.update = function() {
 				avg_buy: avg_buy,
 				avg_sell: avg_sell,
 				last_arbitrage: last.Origin.toString().substr(25),
-				updated: last.LastUpdate
+				updated: last.UnixLastUpdate
 
 			};
 
