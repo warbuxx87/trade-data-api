@@ -63,9 +63,9 @@ sim8.prototype.update = function() {
 				check = data.SpotOrders[i].OrderType;
 				if (check != 0) {
 					check = "Sell";
-					else {
-						check = "Buy";
-					}
+				}
+				if (check != 1) {
+					check = "Buy";
 				}
 				orderStatus = data.SpotOrders[i].OrderStatus;
 				origin = data.SpotOrders[i].Origin;

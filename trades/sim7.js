@@ -56,9 +56,9 @@ sim7.prototype.update = function() {
 				check = data.SpotOrders[i].OrderType;
 				if (check != 0) {
 					check = "Sell";
-					else {
-						check = "Buy";
-					}
+				}
+				if (check != 1) {
+					check = "Buy";
 				}
 				orderStatus = data.SpotOrders[i].OrderStatus;
 				origin = data.SpotOrders[i].Origin;
@@ -97,7 +97,7 @@ sim7.prototype.update = function() {
 			//what's our average sell price per BTC?
 			var avg_sell = sold / sell_orders;
 
-			self.order = last.OrderTypeAsString;
+			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
 			self.total = data.SpotOrders.length;
