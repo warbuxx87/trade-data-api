@@ -54,10 +54,10 @@ sim7.prototype.update = function() {
 			var origin;
 			while (total > i) {
 				check = data.SpotOrders[i].OrderType;
-				if (check != 0) {
+				if (check != 1) {
 					check = "Sell";
 				}
-				if (check != 1) {
+				if (check != 0) {
 					check = "Buy";
 				}
 				orderStatus = data.SpotOrders[i].OrderStatus;
@@ -114,7 +114,7 @@ sim7.prototype.update = function() {
 			self.avg_sell = avg_sell;
 			self.last_arbitrage = last.Origin.toString().substr(25)
 			self.last_arbitrage = self.last_arbitrage.replace('Binance', '');
-			self.updated = last.LastUpdate;
+			self.updated = last.UnixLastUpdate;
 		});
 	}
 
