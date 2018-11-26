@@ -71,11 +71,11 @@ sim5.prototype.update = function() {
 				}
 				//origin checks if corresponding trade completed
 				if (origin != "") {
-					if (check == 1) {
+					if (check == "Sell") {
 						sell_orders = sell_orders + 1;
 						sold = sold + price;
 					}
-					if (check == 0) {
+					if (check == "Buy") {
 						buy_orders = buy_orders + 1;
 						bought = bought + price;
 					}

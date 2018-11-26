@@ -53,12 +53,18 @@ sim3.prototype.update = function() {
 			var fail_total = 0;
 			var origin;
 			while (total > i) {
-				check = data.SpotOrders[i].OrderTypeAsString;
-				orderStatus = data.SpotOrders[i].OrderStatusAsString;
+				check = data.SpotOrders[i].OrderType;
+				if (check != 1) {
+					check = "Sell";
+				}
+				if (check != 0) {
+					check = "Buy";
+				}
+				orderStatus = data.SpotOrders[i].OrderStatus;
 				origin = data.SpotOrders[i].Origin;
 				price = data.SpotOrders[i].Price;
 				//console.log(check);
-				if (orderStatus != "Completed") {
+				if (orderStatus != 5) {
 					//check = "No";
 					failed = failed + 1;
 					fail_total = fail_total + price;
