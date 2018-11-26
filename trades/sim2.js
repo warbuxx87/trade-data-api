@@ -54,10 +54,10 @@ sim2.prototype.update = function() {
 			var origin;
 			while (total > i) {
 				check = data.SpotOrders[i].OrderType;
-				if (check != 1) {
+				if (check == 1) {
 					check = "Sell";
 				}
-				if (check != 0) {
+				if (check == 0) {
 					check = "Buy";
 				}
 				orderStatus = data.SpotOrders[i].OrderStatus;
