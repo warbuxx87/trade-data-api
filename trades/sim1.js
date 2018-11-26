@@ -59,7 +59,7 @@ sim1.prototype.update = function() {
 				if (check != 1) {
 					check = "Sell";
 				}
-				if (check != 0) {
+				if (check != "Sell") {
 					check = "Buy";
 				}
 				orderStatus = data.SpotOrders[i].OrderStatus;
