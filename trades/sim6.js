@@ -60,7 +60,7 @@ sim6.prototype.update = function() {
 				if (check != "Sell") {
 					check = "Buy";
 				}
-				orderStatus = data.SpotOrders[i].orderStatus;
+				orderStatus = data.SpotOrders[i].OrderStatus;
 				origin = data.SpotOrders[i].Origin;
 				price = data.SpotOrders[i].Price;
 				//console.log(check);
