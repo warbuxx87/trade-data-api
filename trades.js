@@ -22,14 +22,14 @@ var bot13 = require('./trades/bot13');
 var bot14 = require('./trades/bot14');
 var bot15 = require('./trades/bot15');
 var bot16 = require('./trades/bot16');
-var bot17 = require('./trades/bot17');
-var bot18 = require('./trades/bot18');
-var bot19 = require('./trades/bot19');
-var bot20 = require('./trades/bot20');
-var bot21 = require('./trades/bot21');
-var bot22 = require('./trades/bot22');
-var bot23 = require('./trades/bot23');
-var bot24 = require('./trades/bot24');
+// var bot17 = require('./trades/bot17');
+// var bot18 = require('./trades/bot18');
+// var bot19 = require('./trades/bot19');
+// var bot20 = require('./trades/bot20');
+// var bot21 = require('./trades/bot21');
+// var bot22 = require('./trades/bot22');
+// var bot23 = require('./trades/bot23');
+// var bot24 = require('./trades/bot24');
 
 // Simulated exchanges
 var sim1 = require('./trades/sim1');
@@ -139,8 +139,7 @@ var TradeMonitor = function() {
 			res.end(JSON.stringify({
 				bots: [self.bot1, self.bot2, self.bot3, self.bot4, self.bot5, self.bot6, self.bot7,
 					self.bot8, self.bot9, self.bot10, self.bot11, self.bot12, self.bot13, self.bot14,
-					self.bot15, self.bot16, self.bot17, self.bot18, self.bot19, self.bot20, self.bot21,
-					self.bot22, self.bot23, self.bot24
+					self.bot15, self.bot16
 				],
 				exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7, self.sim8],
 				stats: [self.stats]
@@ -360,14 +359,14 @@ var TradeMonitor = function() {
 		self.bot14 = new bot14();
 		self.bot15 = new bot15();
 		self.bot16 = new bot16();
-		self.bot17 = new bot17();
-		self.bot18 = new bot18();
-		self.bot19 = new bot19();
-		self.bot20 = new bot20();
-		self.bot21 = new bot21();
-		self.bot22 = new bot22();
-		self.bot23 = new bot23();
-		self.bot24 = new bot24();
+		// self.bot17 = new bot17();
+		// self.bot18 = new bot18();
+		// self.bot19 = new bot19();
+		// self.bot20 = new bot20();
+		// self.bot21 = new bot21();
+		// self.bot22 = new bot22();
+		// self.bot23 = new bot23();
+		// self.bot24 = new bot24();
 
 		// sim exchanges for bots
 		self.sim1 = new sim1();
