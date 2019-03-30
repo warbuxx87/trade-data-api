@@ -49,7 +49,7 @@ sim1.prototype.update = function() {
 
 			var check = "";
 			var failed = 0;
-			var OrderStatus = "";
+			var orderStatus = "";
 			var bought = 0;
 			var sold = 0;
 			var fail_total = 0;
