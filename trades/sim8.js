@@ -105,7 +105,7 @@ sim8.prototype.update = function() {
 			var avg_sell = sold / sell_orders;
 
 			var doc = {
-				order: last.OrderType,
+				order: check,
 				price: parseFloat(last.Price),
 				amount: last.Amount,
 				total: data.Orders.length,
