@@ -70,16 +70,16 @@ sim5.prototype.update = function() {
 					fail_total = fail_total + price;
 				}
 				//origin checks if corresponding trade completed
-				if (origin != "") {
-					if (check == "Sell") {
-						sell_orders = sell_orders + 1;
-						sold = sold + price;
-					}
-					if (check == "Buy") {
-						buy_orders = buy_orders + 1;
-						bought = bought + price;
-					}
+				//if (origin != "") {
+				if (check == "Sell") {
+					sell_orders = sell_orders + 1;
+					sold = sold + price;
 				}
+				if (check == "Buy") {
+					buy_orders = buy_orders + 1;
+					bought = bought + price;
+				}
+				//}
 				i++
 			}
 			//how many of our orders complete?
