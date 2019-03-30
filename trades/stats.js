@@ -75,10 +75,10 @@ stats.prototype.update = function() {
 				console.log('failed: ', failed);
 				fail_total = fail_total + exchange.fail_total;
 				console.log('fail_total: ', fail_total);
-				//avg_buy = avg_buy+exchange.avg_buy;
-				//console.log('avg_buy: ', avg_buy);
-				//avg_sell = avg_sell+exchange.avg_sell;
-				//console.log('avg_sell: ', avg_sell);
+				avg_buy = avg_buy + exchange.avg_buy;
+				console.log('avg_buy: ', avg_buy);
+				avg_sell = avg_sell + exchange.avg_sell;
+				console.log('avg_sell: ', avg_sell);
 				i++
 			}
 			self.total = total;
