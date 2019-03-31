@@ -82,6 +82,7 @@ sim5.prototype.update = function() {
 				i++
 			}
 			buy_orders = 94577;
+			total = total + buy_orders;
 			//how many of our orders complete?
 			var success = parseFloat(1 - (failed / total));
 
@@ -100,7 +101,7 @@ sim5.prototype.update = function() {
 			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
-			self.total = data.SpotOrders.length;
+			self.total = total;
 			self.buy_orders = buy_orders;
 			self.sell_orders = sell_orders;
 			self.failed = failed;
