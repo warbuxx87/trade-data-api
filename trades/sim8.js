@@ -104,35 +104,6 @@ sim8.prototype.update = function() {
 			//what's our average sell price per BTC?
 			var avg_sell = sold / sell_orders;
 
-			var doc = {
-				order: check,
-				price: parseFloat(last.Price),
-				amount: last.Amount,
-				total: data.Orders.length,
-				buy_orders: buy_orders,
-				sell_orders: sell_orders,
-				failed: failed,
-				success: success,
-				buy_total: bought,
-				sell_total: sold,
-				fail_total: fail_total,
-				usd: usd,
-				btc: btc,
-				avg_buy: avg_buy,
-				avg_sell: avg_sell,
-				last_arbitrage: last.Origin.toString().substr(25),
-				updated: last.UnixLastUpdate
-
-			};
-
-			console.log(doc);
-
-			db.insert(doc, function(err, newDoc) { // Callback is optional
-				// newDoc is the newly inserted document, including its _id
-				// newDoc has no key called notToBeSaved since its value was undefined
-			});
-
-
 			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
