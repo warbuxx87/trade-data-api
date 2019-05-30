@@ -81,7 +81,7 @@ sim5.prototype.update = function() {
 
 				i++
 			}
-			buy_orders = 32719 + 540;
+			buy_orders = 32719 - 540;
 
 			total = total + buy_orders;
 			//how many of our orders complete?
