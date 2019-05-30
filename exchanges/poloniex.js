@@ -1,7 +1,7 @@
 const https = require('https');
 
 function hitbtc() {
-	this.name = "hitbtc";
+	this.name = "poloniex";
 	this.updated = new Date();
 	this.timeout = 5000;
 	try {
@@ -16,7 +16,7 @@ hitbtc.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/hitbtc.json',
+		path: '/Simulations/poloniex.json',
 		port: 443,
 		method: 'GET'
 	};

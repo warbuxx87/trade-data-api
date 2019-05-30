@@ -46,8 +46,8 @@ var sim6 = require('./trades/sim6');
 var bittrex = require('./exchanges/bittrex');
 var sim7 = require('./trades/sim7');
 var binance = require('./exchanges/binance');
-//var sim8 = require('./trades/sim8');
-//var hitbtc = require('./exchanges/hitbtc');
+var sim8 = require('./trades/sim8');
+var poloniex = require('./exchanges/poloniex');
 
 
 
@@ -141,7 +141,7 @@ var TradeMonitor = function() {
 					self.bot8, self.bot9, self.bot10, self.bot11, self.bot12, self.bot14,
 					self.bot15, self.bot16
 				],
-				exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7],
+				exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7, self.sim8],
 				stats: [self.stats]
 			}));
 		};
@@ -167,7 +167,7 @@ var TradeMonitor = function() {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify({
-				data: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7]
+				data: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7, self.sim8]
 			}));
 		};
 
@@ -283,7 +283,7 @@ var TradeMonitor = function() {
 			}));
 		};
 
-		self.routes['/exchanges/hitbtc'] = function(req, res) {
+		self.routes['/exchanges/poloniex'] = function(req, res) {
 			res.setHeader('Content-Type', 'application/json');
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify({
@@ -295,7 +295,7 @@ var TradeMonitor = function() {
 					sort: "desc",
 					field: "AddedTime"
 				},
-				data: self.hitbtc.SpotOrders
+				data: self.poloniex.SpotOrders
 			}));
 		};
 
@@ -383,7 +383,7 @@ var TradeMonitor = function() {
 		//self.bittrex = new bittrex();
 		self.sim7 = new sim7();
 		//self.binance = new binance();
-		//self.sim8 = new sim8();
+		self.sim8 = new sim8();
 		//self.hitbtc = new hitbtc();
 
 		// aggregate stats

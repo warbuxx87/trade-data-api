@@ -8,7 +8,7 @@ var Datastore = require('nedb'),
 // You can issue commands right away
 
 function sim8() {
-	this.name = "Hitbtc";
+	this.name = "Poloniex";
 	this.updated = new Date(2000, 1, 1);
 	this.timeout = 60000;
 	try {
@@ -23,7 +23,7 @@ sim8.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/hitbtc.json',
+		path: '/Simulations/poloniex.json',
 		port: 443,
 		method: 'GET'
 	};
@@ -149,7 +149,7 @@ sim8.prototype.update = function() {
 			self.avg_buy = avg_buy;
 			self.avg_sell = avg_sell;
 			self.last_arbitrage = last.Origin.toString().substr(25)
-			self.last_arbitrage = self.last_arbitrage.replace('Hitbtc', '');
+			self.last_arbitrage = self.last_arbitrage.replace('Poloniex', '');
 			self.updated = last.UnixLastUpdate;
 		});
 	}
