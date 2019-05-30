@@ -138,7 +138,7 @@ var TradeMonitor = function() {
 			res.setHeader('Cache-Control', 'no-cache, no-store');
 			res.end(JSON.stringify({
 				bots: [self.bot1, self.bot2, self.bot3, self.bot4, self.bot5, self.bot6, self.bot7,
-					self.bot8, self.bot9, self.bot10, self.bot11, self.bot12, self.bot13, self.bot14,
+					self.bot8, self.bot9, self.bot10, self.bot11, self.bot12, self.bot14,
 					self.bot15, self.bot16
 				],
 				exchanges: [self.sim1, self.sim2, self.sim3, self.sim4, self.sim5, self.sim6, self.sim7],
@@ -355,7 +355,7 @@ var TradeMonitor = function() {
 		self.bot10 = new bot10();
 		self.bot11 = new bot11();
 		self.bot12 = new bot12();
-		self.bot13 = new bot13();
+		//	self.bot13 = new bot13();
 		self.bot14 = new bot14();
 		self.bot15 = new bot15();
 		self.bot16 = new bot16();
