@@ -2,7 +2,7 @@ const https = require('https');
 const fs = require('fs');
 var iconv = require('iconv-lite');
 var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
-var inputFilePath = '/root/HTS/Simulations/' + xgemini + '_history.json');
+var inputFilePath = '/root/HTS/Simulations/' + xgemini + '_history.json';
 var input = fs.readFileSync(inputFilePath, {
 	encoding: "utf-16"
 });
