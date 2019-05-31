@@ -134,6 +134,12 @@ sim6.prototype.update = function() {
 			var avg_sell = sold / sell_orders;
 
 			check = last.OrderType;
+			if (check != 1) {
+				check = "Sell";
+			}
+			if (check != "Sell") {
+				check = "Buy";
+			}
 			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
