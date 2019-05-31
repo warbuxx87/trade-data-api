@@ -3,7 +3,7 @@ const https = require('https');
 function sim6() {
 	this.name = "Bittrex";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 60000;
+	this.timeout = 20000;
 	try {
 		this.update();
 	} catch (e) {

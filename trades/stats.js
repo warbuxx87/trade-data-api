@@ -4,7 +4,7 @@ const https = require('https');
 function stats() {
 	this.name = "Stats";
 	this.updated = new Date();
-	this.timeout = 10000;
+	this.timeout = 20000;
 	try {
 		this.update();
 	} catch (e) {
