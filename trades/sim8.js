@@ -91,7 +91,7 @@ sim8.prototype.update = function() {
 			}
 
 			i = 0;
-			// check loops for ORder totals
+			// check loops for Order totals
 			price = data.Orders[i].Price;
 			while (total2 > i) {
 				check = data.Orders[i].IsBuyOrder;
