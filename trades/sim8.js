@@ -9,15 +9,6 @@ var xpoloniex = "ea529fcb-ad7a-4ede-b808-62aa2de0a268";
 // 	.pipe(iconv.encodeStream('utf-8'))
 // 	.pipe(fs.createWriteStream('/root/HTS/Simulations/poloniex.json'));
 
-
-// Sugar: all encode/decode streams have .collect(cb) method to accumulate data.
-https.createServer(function(req, res) {
-	req.pipe(iconv.decodeStream('utf-16')).collect(function(err, body) {
-		assert(typeof body == 'string');
-		console.log(body); // full request body string
-	});
-});
-
 function sim8() {
 	this.name = "Poloniex";
 	this.updated = new Date(2000, 1, 1);

@@ -1,4 +1,5 @@
 const https = require('https');
+var xpoloniex = "ea529fcb-ad7a-4ede-b808-62aa2de0a268";
 
 function poloniex() {
 	this.name = "poloniex";
@@ -16,19 +17,21 @@ poloniex.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/poloniex.json',
+		path: '/Simulations/' + xpoloniex + '_history.json',
 		port: 443,
 		method: 'GET'
 	};
 
 	callback = function(response) {
-		var str = '';
+		var chunks = []
 		response.on('data', function(chunk) {
-			str += chunk;
+			chunks.push(chunk);
 		});
 
 		response.on('end', function() {
-			var data = JSON.parse(str);
+			var decodedBody = iconv.decode(Buffer.concat(chunks), 'utf16');
+			var str = '';
+			var data = JSON.parse(decodedBody);
 			self.SpotOrders = data.SpotOrders;
 			self.Orders - data.Orders
 		});
