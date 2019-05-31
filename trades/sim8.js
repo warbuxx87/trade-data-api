@@ -3,11 +3,11 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 var xpoloniex = "ea529fcb-ad7a-4ede-b808-62aa2de0a268";
 
-// Convert encoding streaming for poloniex
-fs.createReadStream('/root/HTS/Simulations/' + xpoloniex + '_history.json')
-	.pipe(iconv.decodeStream('utf-16'))
-	.pipe(iconv.encodeStream('utf-8'))
-	.pipe(fs.createWriteStream('/root/HTS/Simulations/poloniex.json'));
+// // Convert encoding streaming for poloniex
+// fs.createReadStream('/root/HTS/Simulations/' + xpoloniex + '_history.json')
+// 	.pipe(iconv.decodeStream('utf-16'))
+// 	.pipe(iconv.encodeStream('utf-8'))
+// 	.pipe(fs.createWriteStream('/root/HTS/Simulations/poloniex.json'));
 
 function sim8() {
 	this.name = "Poloniex";
@@ -25,7 +25,7 @@ sim8.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/poloniex.json',
+		path: '/Simulations/' + xpoloniex + '_history.json',
 		port: 443,
 		method: 'GET'
 	};

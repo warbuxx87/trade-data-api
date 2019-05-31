@@ -4,10 +4,10 @@ const iconv = require('iconv-lite');
 var xbinance = "b29d0acb-9a6e-49f2-8fd8-a137559f834c";
 
 // Convert encoding streaming for binance
-fs.createReadStream('/root/HTS/Simulations/' + xbinance + '_history.json')
-	.pipe(iconv.decodeStream('utf-16'))
-	.pipe(iconv.encodeStream('utf-8'))
-	.pipe(fs.createWriteStream('/root/HTS/Simulations/binance.json'));
+// fs.createReadStream('/root/HTS/Simulations/' + xbinance + '_history.json')
+// 	.pipe(iconv.decodeStream('utf-16'))
+// 	.pipe(iconv.encodeStream('utf-8'))
+// 	.pipe(fs.createWriteStream('/root/HTS/Simulations/binance.json'));
 
 function sim7() {
 	this.name = "Binance";
@@ -26,7 +26,7 @@ sim7.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/binance.json',
+		path: '/Simulations/' + xbinance + '_history.json',
 		port: 443,
 		method: 'GET'
 	};

@@ -4,10 +4,10 @@ const iconv = require('iconv-lite');
 var xbittrex = "00944920-a28f-4366-b65d-d61e6bef27ee";
 
 // Convert encoding streaming for bittrex
-fs.createReadStream('/root/HTS/Simulations/' + xbittrex + '_history.json')
-	.pipe(iconv.decodeStream('utf-16'))
-	.pipe(iconv.encodeStream('utf-8'))
-	.pipe(fs.createWriteStream('/root/HTS/Simulations/bittrex.json'));
+// fs.createReadStream('/root/HTS/Simulations/' + xbittrex + '_history.json')
+// 	.pipe(iconv.decodeStream('utf-16'))
+// 	.pipe(iconv.encodeStream('utf-8'))
+// 	.pipe(fs.createWriteStream('/root/HTS/Simulations/bittrex.json'));
 
 function sim6() {
 	this.name = "Bittrex";
@@ -26,7 +26,7 @@ sim6.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/bittrex.json',
+		path: '/Simulations/' + xbittrex + '_history.json',
 		port: 443,
 		method: 'GET'
 	};

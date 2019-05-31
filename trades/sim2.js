@@ -3,11 +3,11 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 var xgdax = "ac055696-cafd-42e9-90a8-fb7ff62c488c";
 
-// Convert encoding streaming for gdax
-fs.createReadStream('/root/HTS/Simulations/' + xgdax + '_history.json')
-	.pipe(iconv.decodeStream('utf-16'))
-	.pipe(iconv.encodeStream('utf-8'))
-	.pipe(fs.createWriteStream('/root/HTS/Simulations/gdax.json'));
+// // Convert encoding streaming for gdax
+// fs.createReadStream('/root/HTS/Simulations/' + xgdax + '_history.json')
+// 	.pipe(iconv.decodeStream('utf-16'))
+// 	.pipe(iconv.encodeStream('utf-8'))
+// 	.pipe(fs.createWriteStream('/root/HTS/Simulations/gdax.json'));
 
 function sim2() {
 	this.name = "GDAX";
@@ -26,7 +26,7 @@ sim2.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/gdax.json',
+		path: '/Simulations/' + xgdax + '_history.json',
 		port: 443,
 		method: 'GET'
 	};
