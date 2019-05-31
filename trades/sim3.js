@@ -30,10 +30,8 @@ sim3.prototype.update = function() {
 		response.on('end', function() {
 			var data = JSON.parse(str);
 
-			var reverse = data.SpotOrders.reverse();
-
 			// lets grab info about the last order
-			var last = reverse.pop();
+			var last = data.SpotOrders.pop();
 
 			// how many orders in total?
 			var total = self.total = data.SpotOrders.length;
