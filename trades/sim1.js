@@ -4,7 +4,7 @@ var iconv = require('iconv-lite');
 var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
 var inputFilePath = '/root/HTS/Simulations/' + xgemini + '_history.json';
 var input = fs.readFileSync(inputFilePath, {
-	encoding: "UTF-16"
+	encoding: "utf16"
 });
 var outputFilePath = '/root/HTS/Simulations/gemini.json';
 var output = iconv.decode(input, "UTF-8");
