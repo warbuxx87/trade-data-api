@@ -61,3 +61,11 @@ fs.createReadStream('/root/HTS/Simulations/' + xkraken + '_history.json')
 	.pipe(iconv.decodeStream('utf-16'))
 	.pipe(iconv.encodeStream('utf-8'))
 	.pipe(fs.createWriteStream('/root/HTS/Simulations/kraken.json'));
+
+
+/**
+ *  main():  Main code.
+ */
+var zapp = new ExchangeData();
+zapp.initialize();
+zapp.start();
