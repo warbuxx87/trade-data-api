@@ -66,6 +66,9 @@ sim8.prototype.update = function() {
 			var sold = 0;
 			var fail_total = 0;
 			var origin;
+			orderStatus = data.SpotOrders[i].OrderStatus;
+			origin = data.SpotOrders[i].Origin;
+			price = data.SpotOrders[i].Price;
 			while (total1 > i) {
 				check = data.SpotOrders[i].OrderType;
 				if (check != 1) {
@@ -78,9 +81,6 @@ sim8.prototype.update = function() {
 					buy_orders = buy_orders + 1;
 					bought = bought + price;
 				}
-				orderStatus = data.SpotOrders[i].OrderStatus;
-				origin = data.SpotOrders[i].Origin;
-				price = data.SpotOrders[i].Price;
 				//console.log(check);
 				if (orderStatus != 5) {
 					//check = "No";
@@ -92,6 +92,7 @@ sim8.prototype.update = function() {
 
 			i = 0;
 			// check loops for ORder totals
+			price = data.Orders[i].Price;
 			while (total2 > i) {
 				check = data.Orders[i].IsBuyOrder;
 				if (check != true) {
@@ -105,8 +106,7 @@ sim8.prototype.update = function() {
 					bought = bought + price;
 				}
 				orderStatus = data.Orders[i].Status;
-				//origin = data.Orders[i].Origin;
-				price = data.Orders[i].Price;
+
 				//console.log(check);
 				if (orderStatus != 5) {
 					//check = "No";
