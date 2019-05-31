@@ -41,7 +41,6 @@ sim1.prototype.update = function() {
 	};
 
 	callback = function(response) {
-		iconv.decodeStream('utf-16')
 		var str = '';
 		response.on('data', function(chunk) {
 			str += chunk;
