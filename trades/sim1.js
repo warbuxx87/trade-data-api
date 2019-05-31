@@ -5,10 +5,10 @@ var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
 
 
 // Convert encoding streaming for gdax
-fs.createReadStream('/root/HTS/Simulations/' + xgemini + '_history.json')
-	.pipe(iconv.decodeStream('utf-16'))
-	.pipe(iconv.encodeStream('utf-8'))
-	.pipe(fs.createWriteStream('/root/HTS/Simulations/gemini.json'));
+//fs.createReadStream('/root/HTS/Simulations/' + xgemini + '_history.json')
+//	.pipe(iconv.decodeStream('utf-16'))
+//	.pipe(iconv.encodeStream('utf-8'))
+//	.pipe(fs.createWriteStream('/root/HTS/Simulations/gemini.json'));
 
 
 // Sugar: all encode/decode streams have .collect(cb) method to accumulate data.
