@@ -3,6 +3,12 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
 
+// Convert encoding streaming for gemini
+fs.createReadStream('/root/HTS/Simulations/' + xgemini + '_history.json')
+	.pipe(iconv.decodeStream('utf-16'))
+	.pipe(iconv.encodeStream('utf-8'))
+	.pipe(fs.createWriteStream('/root/HTS/Simulations/gemini.json'));
+
 function sim1() {
 	this.name = "Gemini";
 	this.updated = new Date(2000, 1, 1);
@@ -16,11 +22,6 @@ function sim1() {
 }
 
 sim1.prototype.update = function() {
-	// Convert encoding streaming for gemini
-	fs.createReadStream('/root/HTS/Simulations/' + xgemini + '_history.json')
-		.pipe(iconv.decodeStream('utf-16'))
-		.pipe(iconv.encodeStream('utf-8'))
-		.pipe(fs.createWriteStream('/root/HTS/Simulations/gemini.json'));
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
