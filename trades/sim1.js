@@ -1,13 +1,14 @@
 const https = require('https');
 const fs = require('fs');
-const iconv = require('iconv-lite');
+var iconv = require('iconv-lite');
 var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
-
-// Convert encoding streaming for gemini
-fs.createReadStream('/root/HTS/Simulations/' + xgemini + '_history.json')
-	.pipe(iconv.decodeStream('utf-16'))
-	.pipe(iconv.encodeStream('utf-8'))
-	.pipe(fs.createWriteStream('/root/HTS/Simulations/gemini.json'));
+var inputFilePath = '/root/HTS/Simulations/' + xgemini + '_history.json');
+var input = fs.readFileSync(inputFilePath, {
+	encoding: "utf-16"
+});
+var outputFilePath = '/root/HTS/Simulations/gemini.json';
+var output = iconv.decode(input, "uft-8");
+fs.writeFileSync(outputFilePath, output);
 
 function sim1() {
 	this.name = "Gemini";
@@ -31,6 +32,7 @@ sim1.prototype.update = function() {
 	};
 
 	callback = function(response) {
+		iconv.decodeStream('utf-16')
 		var str = '';
 		response.on('data', function(chunk) {
 			str += chunk;
