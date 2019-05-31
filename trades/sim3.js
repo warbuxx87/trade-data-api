@@ -1,4 +1,7 @@
 const https = require('https');
+const fs = require('fs');
+const iconv = require('iconv-lite');
+var xbitstamp = "ae8941ca-f26c-48a6-a58c-d93f66464895";
 
 function sim3() {
 	this.name = "Bitstamp";
@@ -13,6 +16,11 @@ function sim3() {
 }
 
 sim3.prototype.update = function() {
+	// Convert encoding streaming for bitstamp
+	fs.createReadStream('/root/HTS/Simulations/' + xbitstamp + '_history.json')
+		.pipe(iconv.decodeStream('utf-16'))
+		.pipe(iconv.encodeStream('utf-8'))
+		.pipe(fs.createWriteStream('/root/HTS/Simulations/bitstamp.json'));
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
