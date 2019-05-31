@@ -70,9 +70,13 @@ sim8.prototype.update = function() {
 				check = data.SpotOrders[i].OrderType;
 				if (check != 1) {
 					check = "Sell";
+					sell_orders = sell_orders + 1;
+					sold = sold + price;
 				}
 				if (check != "Sell") {
 					check = "Buy";
+					buy_orders = buy_orders + 1;
+					bought = bought + price;
 				}
 				orderStatus = data.SpotOrders[i].OrderStatus;
 				origin = data.SpotOrders[i].Origin;
@@ -83,17 +87,6 @@ sim8.prototype.update = function() {
 					failed = failed + 1;
 					fail_total = fail_total + price;
 				}
-				//origin checks if corresponding trade completed
-				if (origin != "") {
-					if (check == "Sell") {
-						sell_orders = sell_orders + 1;
-						sold = sold + price;
-					}
-					if (check == "Buy") {
-						buy_orders = buy_orders + 1;
-						bought = bought + price;
-					}
-				}
 				i++
 			}
 
@@ -103,9 +96,13 @@ sim8.prototype.update = function() {
 				check = data.Orders[i].IsBuyOrder;
 				if (check != true) {
 					check = "Sell";
+					sell_orders = sell_orders + 1;
+					sold = sold + price;
 				}
 				if (check != "Sell") {
 					check = "Buy";
+					buy_orders = buy_orders + 1;
+					bought = bought + price;
 				}
 				orderStatus = data.Orders[i].Status;
 				//origin = data.Orders[i].Origin;
@@ -115,17 +112,6 @@ sim8.prototype.update = function() {
 					//check = "No";
 					failed = failed + 1;
 					fail_total = fail_total + price;
-				}
-				//origin checks if corresponding trade completed
-				if (origin != "") {
-					if (check == "Sell") {
-						sell_orders = sell_orders + 1;
-						sold = sold + price;
-					}
-					if (check == "Buy") {
-						buy_orders = buy_orders + 1;
-						bought = bought + price;
-					}
 				}
 				i++
 			}
@@ -161,8 +147,6 @@ sim8.prototype.update = function() {
 			self.btc = btc;
 			self.avg_buy = avg_buy;
 			self.avg_sell = avg_sell;
-			self.last_arbitrage = last.Origin.toString().substr(25)
-			self.last_arbitrage = self.last_arbitrage.replace('Poloniex', '');
 			self.updated = last.UnixLastUpdate;
 		});
 	}
