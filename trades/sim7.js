@@ -97,12 +97,12 @@ sim7.prototype.update = function() {
 			price = data.Orders[i].Price;
 			while (total2 > i) {
 				check = data.Orders[i].IsBuyOrder;
-				if (check != true) {
+				if (check = false) {
 					check = "Sell";
 					sell_orders = sell_orders + 1;
 					sold = sold + price;
 				}
-				if (check != "Sell") {
+				if (check = true) {
 					check = "Buy";
 					buy_orders = buy_orders + 1;
 					bought = bought + price;
