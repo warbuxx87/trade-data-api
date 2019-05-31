@@ -44,6 +44,7 @@ sim7.prototype.update = function() {
 
 			// lets grab info about the last order
 			var last = data.SpotOrders.pop();
+			var last2 = data.Orders.pop();
 
 			// how many orders in total?
 			var total = self.total = data.SpotOrders.length;
@@ -126,6 +127,7 @@ sim7.prototype.update = function() {
 			self.avg_sell = avg_sell;
 			self.last_arbitrage = last.Origin.toString().substr(25)
 			self.last_arbitrage = self.last_arbitrage.replace('Binance', '');
+			self.last2 = last2;
 			self.updated = last.UnixLastUpdate;
 		});
 	}
