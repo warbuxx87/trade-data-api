@@ -32,13 +32,15 @@ sim4.prototype.update = function() {
 	};
 
 	callback = function(response) {
-		var str = '';
+		var chunks = []
 		response.on('data', function(chunk) {
-			str += chunk;
+			chunks.push(chunk);
 		});
 
 		response.on('end', function() {
-			var data = JSON.parse(str);
+			var decodedBody = iconv.decode(Buffer.concat(chunks), 'utf16');
+			var str = '';
+			var data = JSON.parse(decodedBody);
 
 			// lets grab info about the last order
 			var last = data.SpotOrders.pop();

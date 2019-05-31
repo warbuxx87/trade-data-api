@@ -41,13 +41,15 @@ sim1.prototype.update = function() {
 	};
 
 	callback = function(response) {
-		var str = '';
+		var chunks = []
 		response.on('data', function(chunk) {
-			str += chunk;
+			chunks.push(chunk);
 		});
 
 		response.on('end', function() {
-			var data = JSON.parse(str);
+			var decodedBody = iconv.decode(Buffer.concat(chunks), 'utf16');
+			var str = '';
+			var data = JSON.parse(decodedBody);
 
 			var SpotOrders = data.SpotOrders;
 
