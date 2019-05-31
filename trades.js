@@ -5,6 +5,7 @@ const express = require('express');
 const paginate = require('express-paginate');
 const fs = require('fs');
 
+
 // Bot Performance
 var bot1 = require('./trades/bot1');
 var bot2 = require('./trades/bot2');

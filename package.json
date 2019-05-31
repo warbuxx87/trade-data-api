@@ -23,10 +23,13 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
+    "buffer": "^5.2.1",
     "express": "~3.4.4",
     "express-paginate": "^1.0.0",
+    "iconv-lite": "^0.4.24",
     "nedb": "^1.8.0",
     "pmx": "^1.5.4",
+    "stream": "0.0.2",
     "toobusy-js": "^0.5.1"
   },
   "devDependencies": {},

@@ -1,4 +1,12 @@
 const https = require('https');
+const fs = require('fs');
+var iconv = require('iconv-lite');
+
+// Convert encoding streaming example
+fs.createReadStream('/root/HTS/Simulations/b29d0acb-9a6e-49f2-8fd8-a137559f834c_history.json')
+	.pipe(iconv.decodeStream('utf-16'))
+	.pipe(iconv.encodeStream('utf-8'))
+	.pipe(fs.createWriteStream('/root/HTS/Simulations/binance2.json'));
 
 function binance() {
 	this.name = "Binance";
@@ -16,7 +24,7 @@ binance.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/binance.json',
+		path: '/Simulations/binance2.json',
 		port: 443,
 		method: 'GET'
 	};

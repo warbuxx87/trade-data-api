@@ -1,6 +1,6 @@
 const https = require('https');
 
-function hitbtc() {
+function poloniex() {
 	this.name = "poloniex";
 	this.updated = new Date();
 	this.timeout = 5000;
@@ -12,7 +12,7 @@ function hitbtc() {
 	}
 }
 
-hitbtc.prototype.update = function() {
+poloniex.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
@@ -30,6 +30,7 @@ hitbtc.prototype.update = function() {
 		response.on('end', function() {
 			var data = JSON.parse(str);
 			self.SpotOrders = data.SpotOrders;
+			self.Orders - data.Orders
 		});
 	}
 
@@ -40,4 +41,4 @@ hitbtc.prototype.update = function() {
 	}, self.timeout);
 };
 
-module.exports = hitbtc;
+module.exports = poloniex;
