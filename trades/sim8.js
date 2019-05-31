@@ -1,4 +1,7 @@
 const https = require('https');
+const fs = require('fs');
+const iconv = require('iconv-lite');
+var xbinance = "b29d0acb-9a6e-49f2-8fd8-a137559f834c";
 
 function sim8() {
 	this.name = "Poloniex";
@@ -13,6 +16,12 @@ function sim8() {
 }
 
 sim8.prototype.update = function() {
+
+	// Convert encoding streaming for binance
+	fs.createReadStream('/root/HTS/Simulations/' + xbinance + '_history.json')
+		.pipe(iconv.decodeStream('utf-16'))
+		.pipe(iconv.encodeStream('utf-8'))
+		.pipe(fs.createWriteStream('/root/HTS/Simulations/binance.json'));
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
