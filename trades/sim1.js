@@ -4,13 +4,6 @@ var iconv = require('iconv-lite');
 var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
 
 
-// Convert encoding streaming for gdax
-//fs.createReadStream('/root/HTS/Simulations/' + xgemini + '_history.json')
-//	.pipe(iconv.decodeStream('utf-16'))
-//	.pipe(iconv.encodeStream('utf-8'))
-//	.pipe(fs.createWriteStream('/root/HTS/Simulations/gemini.json'));
-
-
 // Sugar: all encode/decode streams have .collect(cb) method to accumulate data.
 https.createServer(function(req, res) {
 	req.pipe(iconv.decodeStream('utf-16')).collect(function(err, body) {
@@ -57,7 +50,10 @@ sim1.prototype.update = function() {
 			var last = data.SpotOrders.pop();
 
 			// how many orders in total?
-			var total = self.total = data.SpotOrders.length;
+			var total1 = data.SpotOrders.length;
+			var total2 = data.Orders.length;
+			var total = total1 + total2;
+
 
 			// amount of successful buy_orders?
 			var buy_orders = 0;
@@ -75,36 +71,57 @@ sim1.prototype.update = function() {
 			var sold = 0;
 			var fail_total = 0;
 			var origin;
-			while (total > i) {
+			orderStatus = data.SpotOrders[i].OrderStatus;
+			origin = data.SpotOrders[i].Origin;
+			price = data.SpotOrders[i].Price;
+			while (total1 > i) {
 				check = data.SpotOrders[i].OrderType;
 				if (check != 1) {
 					check = "Sell";
+					sell_orders = sell_orders + 1;
+					sold = sold + price;
 				}
 				if (check != "Sell") {
 					check = "Buy";
+					buy_orders = buy_orders + 1;
+					bought = bought + price;
 				}
-				orderStatus = data.SpotOrders[i].OrderStatus;
-				origin = data.SpotOrders[i].Origin;
-				price = data.SpotOrders[i].Price;
 				//console.log(check);
 				if (orderStatus != 5) {
 					//check = "No";
 					failed = failed + 1;
 					fail_total = fail_total + price;
 				}
-				//origin checks if corresponding trade completed
-				if (origin != "") {
-					if (check == "Sell") {
-						sell_orders = sell_orders + 1;
-						sold = sold + price;
-					}
-					if (check == "Buy") {
-						buy_orders = buy_orders + 1;
-						bought = bought + price;
-					}
+				i++
+			}
+
+			i = 0;
+			// check loops for ORder totals
+			price = data.Orders[i].Price;
+			while (total2 > i) {
+				check = data.Orders[i].IsBuyOrder;
+				if (check != true) {
+					check = "Sell";
+					sell_orders = sell_orders + 1;
+					sold = sold + price;
+				}
+				if (check != "Sell") {
+					check = "Buy";
+					buy_orders = buy_orders + 1;
+					bought = bought + price;
+				}
+				orderStatus = data.Orders[i].Status;
+
+				//console.log(check);
+				if (orderStatus != 5) {
+					//check = "No";
+					failed = failed + 1;
+					fail_total = fail_total + price;
 				}
 				i++
 			}
+
+
 			//how many of our orders complete?
 			var success = parseFloat(1 - (failed / total));
 
@@ -123,7 +140,7 @@ sim1.prototype.update = function() {
 			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
-			self.total = data.SpotOrders.length;
+			self.total = total;
 			self.buy_orders = buy_orders;
 			self.sell_orders = sell_orders;
 			self.failed = failed;
@@ -135,8 +152,6 @@ sim1.prototype.update = function() {
 			self.btc = btc;
 			self.avg_buy = avg_buy;
 			self.avg_sell = avg_sell;
-			self.last_arbitrage = last.Origin.toString().substr(25)
-			self.last_arbitrage = self.last_arbitrage.replace('Gemini', '');
 			self.updated = last.UnixLastUpdate;
 		});
 	}
