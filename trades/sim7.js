@@ -134,6 +134,8 @@ sim7.prototype.update = function() {
 			//what's our average sell price per BTC?
 			var avg_sell = sold / sell_orders;
 
+			check = data.SpotOrders[i].OrderType;
+
 			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
