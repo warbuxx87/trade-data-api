@@ -33,7 +33,7 @@ poloniex.prototype.update = function() {
 			var str = '';
 			var data = JSON.parse(decodedBody);
 			self.SpotOrders = data.SpotOrders;
-			self.Orders - data.Orders
+			self.Orders = data.Orders;
 		});
 	}
 
