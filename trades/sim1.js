@@ -35,7 +35,7 @@ sim1.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/gemini.json',
+		path: '/Simulations/' + xgemini + '_history.json',
 		port: 443,
 		method: 'GET'
 	};
