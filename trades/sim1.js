@@ -2,13 +2,22 @@ const https = require('https');
 const fs = require('fs');
 var iconv = require('iconv-lite');
 var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
-var inputFilePath = '/root/HTS/Simulations/' + xgemini + '_history.json';
-var input = fs.readFileSync(inputFilePath, {
-	encoding: "utf16"
+
+
+// Convert encoding streaming for gdax
+fs.createReadStream('/root/HTS/Simulations/' + xgemini + '_history.json')
+	.pipe(iconv.decodeStream('utf-16'))
+	.pipe(iconv.encodeStream('utf-8'))
+	.pipe(fs.createWriteStream('/root/HTS/Simulations/gemini.json'));
+
+
+// Sugar: all encode/decode streams have .collect(cb) method to accumulate data.
+https.createServer(function(req, res) {
+	req.pipe(iconv.decodeStream('utf-16')).collect(function(err, body) {
+		assert(typeof body == 'string');
+		console.log(body); // full request body string
+	});
 });
-var outputFilePath = '/root/HTS/Simulations/gemini.json';
-var output = iconv.decode(input, "UTF-8");
-fs.writeFileSync(outputFilePath, output);
 
 function sim1() {
 	this.name = "Gemini";
