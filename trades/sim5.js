@@ -26,7 +26,7 @@ sim5.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/' + xbifinex + '_history.json',
+		path: '/Simulations/' + xbitfinex + '_history.json',
 		port: 443,
 		method: 'GET'
 	};
