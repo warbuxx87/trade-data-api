@@ -44,7 +44,7 @@ fs.createReadStream('/root/HTS/Simulations/' + xpoloniex + '_history.json')
 	.pipe(fs.createWriteStream('/root/HTS/Simulations/poloniex.json'));
 
 // Convert encoding streaming for bitstamp
-fs.createReadStream('/root/HTS/Simulations/' + xbitsamp + '_history.json')
+fs.createReadStream('/root/HTS/Simulations/' + xbitstamp + '_history.json')
 	.pipe(iconv.decodeStream('utf-16'))
 	.pipe(iconv.encodeStream('utf-8'))
 	.pipe(fs.createWriteStream('/root/HTS/Simulations/bitstamp.json'));
