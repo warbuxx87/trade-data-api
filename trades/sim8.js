@@ -45,7 +45,10 @@ sim8.prototype.update = function() {
 			var last = data.SpotOrders.pop();
 
 			// how many orders in total?
-			var total = self.total = data.SpotOrders.length;
+			var total1 = data.SpotOrders.length;
+			var total2 = data.Orders.length;
+			var total = total1 + total2;
+
 
 			// amount of successful buy_orders?
 			var buy_orders = 0;
@@ -63,7 +66,7 @@ sim8.prototype.update = function() {
 			var sold = 0;
 			var fail_total = 0;
 			var origin;
-			while (total > i) {
+			while (total1 > i) {
 				check = data.SpotOrders[i].OrderType;
 				if (check != 1) {
 					check = "Sell";
@@ -93,6 +96,41 @@ sim8.prototype.update = function() {
 				}
 				i++
 			}
+
+			i = 0;
+			// check loops for ORder totals
+			while (total2 > i) {
+				check = data.Orders[i].IsBuyOrder;
+				if (check != true) {
+					check = "Sell";
+				}
+				if (check != "Sell") {
+					check = "Buy";
+				}
+				orderStatus = data.Orders[i].Status;
+				//origin = data.Orders[i].Origin;
+				price = data.Orders[i].Price;
+				//console.log(check);
+				if (orderStatus != 5) {
+					//check = "No";
+					failed = failed + 1;
+					fail_total = fail_total + price;
+				}
+				//origin checks if corresponding trade completed
+				if (origin != "") {
+					if (check == "Sell") {
+						sell_orders = sell_orders + 1;
+						sold = sold + price;
+					}
+					if (check == "Buy") {
+						buy_orders = buy_orders + 1;
+						bought = bought + price;
+					}
+				}
+				i++
+			}
+
+
 			//how many of our orders complete?
 			var success = parseFloat(1 - (failed / total));
 
@@ -111,7 +149,7 @@ sim8.prototype.update = function() {
 			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;
-			self.total = data.SpotOrders.length;
+			self.total = total;
 			self.buy_orders = buy_orders;
 			self.sell_orders = sell_orders;
 			self.failed = failed;
