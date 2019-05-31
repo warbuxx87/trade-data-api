@@ -3,6 +3,12 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 var xgdax = "ac055696-cafd-42e9-90a8-fb7ff62c488c";
 
+// Convert encoding streaming for gdax
+fs.createReadStream('/root/HTS/Simulations/' + xgdax + '_history.json')
+	.pipe(iconv.decodeStream('utf-16'))
+	.pipe(iconv.encodeStream('utf-8'))
+	.pipe(fs.createWriteStream('/root/HTS/Simulations/gdax.json'));
+
 function sim2() {
 	this.name = "GDAX";
 	this.updated = new Date(2000, 1, 1);
@@ -16,11 +22,6 @@ function sim2() {
 }
 
 sim2.prototype.update = function() {
-	// Convert encoding streaming for gdax
-	fs.createReadStream('/root/HTS/Simulations/' + xgdax + '_history.json')
-		.pipe(iconv.decodeStream('utf-16'))
-		.pipe(iconv.encodeStream('utf-8'))
-		.pipe(fs.createWriteStream('/root/HTS/Simulations/gdax.json'));
 
 	var self = this;
 	var options = {

@@ -3,6 +3,12 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 var xkraken = "1fb3443b-33e9-4ab7-9cc4-2cdc088b8f49";
 
+// Convert encoding streaming for kraken
+fs.createReadStream('/root/HTS/Simulations/' + xkraken + '_history.json')
+	.pipe(iconv.decodeStream('utf-16'))
+	.pipe(iconv.encodeStream('utf-8'))
+	.pipe(fs.createWriteStream('/root/HTS/Simulations/kraken.json'));
+
 function sim4() {
 	this.name = "Kraken";
 	this.updated = new Date(2000, 1, 1);
@@ -16,11 +22,6 @@ function sim4() {
 }
 
 sim4.prototype.update = function() {
-	// Convert encoding streaming for kraken
-	fs.createReadStream('/root/HTS/Simulations/' + xkraken + '_history.json')
-		.pipe(iconv.decodeStream('utf-16'))
-		.pipe(iconv.encodeStream('utf-8'))
-		.pipe(fs.createWriteStream('/root/HTS/Simulations/kraken.json'));
 
 	var self = this;
 	var options = {

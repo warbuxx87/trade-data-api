@@ -3,6 +3,12 @@ const fs = require('fs');
 const iconv = require('iconv-lite');
 var xbitfinex = "b34314bd-376b-47ce-b807-0d38885ed6e8";
 
+// Convert encoding streaming for bitfinex
+fs.createReadStream('/root/HTS/Simulations/' + xbitfinex + '_history.json')
+	.pipe(iconv.decodeStream('utf-16'))
+	.pipe(iconv.encodeStream('utf-8'))
+	.pipe(fs.createWriteStream('/root/HTS/Simulations/bitfinex.json'));
+
 function sim5() {
 	this.name = "Bitfinex";
 	this.updated = new Date(2000, 1, 1);
@@ -16,11 +22,7 @@ function sim5() {
 }
 
 sim5.prototype.update = function() {
-	// Convert encoding streaming for bitfinex
-	fs.createReadStream('/root/HTS/Simulations/' + xbitfinex + '_history.json')
-		.pipe(iconv.decodeStream('utf-16'))
-		.pipe(iconv.encodeStream('utf-8'))
-		.pipe(fs.createWriteStream('/root/HTS/Simulations/bitfinex.json'));
+
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
