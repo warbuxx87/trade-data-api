@@ -12,7 +12,7 @@ var xbittrex = "00944920-a28f-4366-b65d-d61e6bef27ee";
 function sim6() {
 	this.name = "Bittrex";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 20000;
+	this.timeout = 100000;
 	try {
 		this.update();
 	} catch (e) {

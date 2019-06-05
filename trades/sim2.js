@@ -12,7 +12,7 @@ var xgdax = "ac055696-cafd-42e9-90a8-fb7ff62c488c";
 function sim2() {
 	this.name = "GDAX";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 20000;
+	this.timeout = 100000;
 	try {
 		this.update();
 	} catch (e) {

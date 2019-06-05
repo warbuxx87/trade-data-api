@@ -12,7 +12,7 @@ var xbinance = "b29d0acb-9a6e-49f2-8fd8-a137559f834c";
 function sim7() {
 	this.name = "Binance";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 20000;
+	this.timeout = 100000;
 	try {
 		this.update();
 	} catch (e) {

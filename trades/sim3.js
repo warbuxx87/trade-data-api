@@ -12,7 +12,7 @@ var xbitstamp = "ae8941ca-f26c-48a6-a58c-d93f66464895";
 function sim3() {
 	this.name = "Bitstamp";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 20000;
+	this.timeout = 100000;
 	try {
 		this.update();
 	} catch (e) {

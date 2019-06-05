@@ -12,7 +12,7 @@ var xkraken = "1fb3443b-33e9-4ab7-9cc4-2cdc088b8f49";
 function sim4() {
 	this.name = "Kraken";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 20000;
+	this.timeout = 100000;
 	try {
 		this.update();
 	} catch (e) {

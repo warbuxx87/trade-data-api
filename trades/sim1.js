@@ -3,7 +3,6 @@ const fs = require('fs');
 var iconv = require('iconv-lite');
 var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
 
-
 // Sugar: all encode/decode streams have .collect(cb) method to accumulate data.
 https.createServer(function(req, res) {
 	req.pipe(iconv.decodeStream('utf-16')).collect(function(err, body) {
@@ -15,7 +14,7 @@ https.createServer(function(req, res) {
 function sim1() {
 	this.name = "Gemini";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 20000;
+	this.timeout = 100000;
 	try {
 		this.update();
 	} catch (e) {
@@ -96,7 +95,7 @@ sim1.prototype.update = function() {
 			}
 
 			i = 0;
-			// check loops for ORder totals
+			// check loops for Order totals
 			price = data.Orders[i].Price;
 			while (total2 > i) {
 				check = data.Orders[i].IsBuyOrder;
@@ -144,7 +143,6 @@ sim1.prototype.update = function() {
 			if (check != "Sell") {
 				check = "Buy";
 			}
-
 			self.order = check;
 			self.price = parseFloat(last.Price);
 			self.amount = last.Amount;

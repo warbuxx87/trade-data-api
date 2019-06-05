@@ -12,7 +12,7 @@ var xbitfinex = "b34314bd-376b-47ce-b807-0d38885ed6e8";
 function sim5() {
 	this.name = "Bitfinex";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 20000;
+	this.timeout = 100000;
 	try {
 		this.update();
 	} catch (e) {

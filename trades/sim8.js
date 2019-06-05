@@ -12,7 +12,7 @@ var xpoloniex = "ea529fcb-ad7a-4ede-b808-62aa2de0a268";
 function sim8() {
 	this.name = "Poloniex";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 20000;
+	this.timeout = 100000;
 	try {
 		this.update();
 	} catch (e) {
