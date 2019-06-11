@@ -93,7 +93,7 @@ sim6.prototype.update = function() {
 				i++
 			}
 
-			//i = 0;
+			i = 0;
 			// // check loops for Order totals
 			// price = data.Orders[i].Price;
 			// while (total2 > i) {
