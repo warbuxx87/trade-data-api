@@ -1,7 +1,9 @@
 const https = require('https');
 const fs = require('fs');
 const iconv = require('iconv-lite');
-var xpoloniex = "ea529fcb-ad7a-4ede-b808-62aa2de0a268";
+//platform 12
+//const xpoloniex = "ea529fcb-ad7a-4ede-b808-62aa2de0a268";
+const xpoloniex = "a4559e61-1120-4296-a4ef-dac668f9139a";
 
 // // Convert encoding streaming for poloniex
 // fs.createReadStream('/root/HTS/Simulations/' + xpoloniex + '_history.json')

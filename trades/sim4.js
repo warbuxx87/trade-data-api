@@ -1,7 +1,9 @@
 const https = require('https');
 const fs = require('fs');
 const iconv = require('iconv-lite');
-var xkraken = "1fb3443b-33e9-4ab7-9cc4-2cdc088b8f49";
+// platform 7
+//var xkraken = "1fb3443b-33e9-4ab7-9cc4-2cdc088b8f49";
+const xkraken = "e714fcf3-9697-4701-92f5-02d8cfff7773";
 
 // // Convert encoding streaming for kraken
 // fs.createReadStream('/root/HTS/Simulations/' + xkraken + '_history.json')

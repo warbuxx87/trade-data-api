@@ -1,7 +1,9 @@
 const https = require('https');
 const fs = require('fs');
 const iconv = require('iconv-lite');
-var xbitfinex = "b34314bd-376b-47ce-b807-0d38885ed6e8";
+// platform 1
+//const xbitfinex = "b34314bd-376b-47ce-b807-0d38885ed6e8";
+const xbitfinex = "10bc20c0-a85c-41f1-9014-bdabec13d769";
 
 // // Convert encoding streaming for bitfinex
 // fs.createReadStream('/root/HTS/Simulations/' + xbitfinex + '_history.json')

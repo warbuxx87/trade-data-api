@@ -1,7 +1,9 @@
 const https = require('https');
 const fs = require('fs');
 const iconv = require('iconv-lite');
-var xgdax = "ac055696-cafd-42e9-90a8-fb7ff62c488c";
+//platform 11
+//var xgdax = "ac055696-cafd-42e9-90a8-fb7ff62c488c";
+const xgdax = "14c7ff40-2cce-4043-9163-e9a2344f11a6";
 
 // // Convert encoding streaming for gdax
 // fs.createReadStream('/root/HTS/Simulations/' + xgdax + '_history.json')

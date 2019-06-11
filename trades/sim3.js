@@ -1,7 +1,9 @@
 const https = require('https');
 const fs = require('fs');
 const iconv = require('iconv-lite');
-var xbitstamp = "ae8941ca-f26c-48a6-a58c-d93f66464895";
+// platform 9
+//var xbitstamp = "ae8941ca-f26c-48a6-a58c-d93f66464895";
+const xbitstamp = "c2728efb-bd07-43cc-ab7b-6728f5497beb";
 
 // // Convert encoding streaming for bitstamp
 // fs.createReadStream('/root/HTS/Simulations/' + xbitstamp + '_history.json')

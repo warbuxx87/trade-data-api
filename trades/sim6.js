@@ -1,7 +1,9 @@
 const https = require('https');
 const fs = require('fs');
 const iconv = require('iconv-lite');
-var xbittrex = "00944920-a28f-4366-b65d-d61e6bef27ee";
+//platform 4
+//const xbittrex = "00944920-a28f-4366-b65d-d61e6bef27ee";
+const xbittrex = "159802e3-b77e-40a1-91d1-25ac641035de";
 
 // Convert encoding streaming for bittrex
 // fs.createReadStream('/root/HTS/Simulations/' + xbittrex + '_history.json')

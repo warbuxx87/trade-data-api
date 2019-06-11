@@ -1,7 +1,9 @@
 const https = require('https');
 const fs = require('fs');
 var iconv = require('iconv-lite');
-var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
+//platform 16
+//var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
+const xgemini = "3e74323b-9fc6-4335-aba6-b4f8eba65614";
 
 // Sugar: all encode/decode streams have .collect(cb) method to accumulate data.
 https.createServer(function(req, res) {
