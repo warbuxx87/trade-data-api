@@ -47,9 +47,9 @@ sim8.prototype.update = function() {
 			var last = data.SpotOrders.pop();
 
 			// how many orders in total?
-			var total1 = data.SpotOrders.length;
-			var total2 = data.Orders.length;
-			var total = total1 + total2;
+			var total = data.SpotOrders.length;
+			//var total2 = data.Orders.length;
+			//var total = total1 + total2;
 
 
 			// amount of successful buy_orders?
@@ -71,7 +71,7 @@ sim8.prototype.update = function() {
 			orderStatus = data.SpotOrders[i].OrderStatus;
 			origin = data.SpotOrders[i].Origin;
 			price = data.SpotOrders[i].Price;
-			while (total1 > i) {
+			while (total > i) {
 				check = data.SpotOrders[i].OrderType;
 				if (check != 1) {
 					check = "Sell";
@@ -93,30 +93,30 @@ sim8.prototype.update = function() {
 			}
 
 			i = 0;
-			// check loops for Order totals
-			price = data.Orders[i].Price;
-			while (total2 > i) {
-				check = data.Orders[i].IsBuyOrder;
-				if (check = false) {
-					check = "Sell";
-					sell_orders = sell_orders + 1;
-					sold = sold + price;
-				}
-				if (check = true) {
-					check = "Buy";
-					buy_orders = buy_orders + 1;
-					bought = bought + price;
-				}
-				orderStatus = data.Orders[i].Status;
-
-				//console.log(check);
-				if (orderStatus != 5) {
-					//check = "No";
-					failed = failed + 1;
-					fail_total = fail_total + price;
-				}
-				i++
-			}
+			// // check loops for Order totals
+			// price = data.Orders[i].Price;
+			// while (total2 > i) {
+			// 	check = data.Orders[i].IsBuyOrder;
+			// 	if (check = false) {
+			// 		check = "Sell";
+			// 		sell_orders = sell_orders + 1;
+			// 		sold = sold + price;
+			// 	}
+			// 	if (check = true) {
+			// 		check = "Buy";
+			// 		buy_orders = buy_orders + 1;
+			// 		bought = bought + price;
+			// 	}
+			// 	orderStatus = data.Orders[i].Status;
+			//
+			// 	//console.log(check);
+			// 	if (orderStatus != 5) {
+			// 		//check = "No";
+			// 		failed = failed + 1;
+			// 		fail_total = fail_total + price;
+			// 	}
+			// 	i++
+			// }
 
 
 			//how many of our orders complete?
