@@ -14,7 +14,7 @@ const xbitfinex = "10bc20c0-a85c-41f1-9014-bdabec13d769";
 function sim5() {
 	this.name = "Bitfinex";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 100000;
+	this.timeout = 2000;
 	try {
 		this.update();
 	} catch (e) {

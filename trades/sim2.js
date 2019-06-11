@@ -14,7 +14,7 @@ const xgdax = "14c7ff40-2cce-4043-9163-e9a2344f11a6";
 function sim2() {
 	this.name = "GDAX";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 100000;
+	this.timeout = 2000;
 	try {
 		this.update();
 	} catch (e) {

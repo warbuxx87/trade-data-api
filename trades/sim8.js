@@ -14,7 +14,7 @@ const xpoloniex = "a4559e61-1120-4296-a4ef-dac668f9139a";
 function sim8() {
 	this.name = "Poloniex";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 100000;
+	this.timeout = 2000;
 	try {
 		this.update();
 	} catch (e) {

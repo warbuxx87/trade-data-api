@@ -14,7 +14,7 @@ const xbitstamp = "c2728efb-bd07-43cc-ab7b-6728f5497beb";
 function sim3() {
 	this.name = "Bitstamp";
 	this.updated = new Date(2000, 1, 1);
-	this.timeout = 100000;
+	this.timeout = 2000;
 	try {
 		this.update();
 	} catch (e) {
