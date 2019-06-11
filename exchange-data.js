@@ -6,6 +6,7 @@ var iconv = require('iconv-lite');
 
 // exchange data hash identifier
 var xbinance = "b29d0acb-9a6e-49f2-8fd8-a137559f834c";
+var xbinance2 = "cca3ee77-fba1-4840-9a7a-3482a57d97e9";
 var xgemini = "6af0fee7-3ec5-4272-83c9-b56ffc6b2b73";
 var xgdax = "ac055696-cafd-42e9-90a8-fb7ff62c488c";
 var xpoloniex = "ea529fcb-ad7a-4ede-b808-62aa2de0a268";

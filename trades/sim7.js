@@ -2,6 +2,7 @@ const https = require('https');
 const fs = require('fs');
 const iconv = require('iconv-lite');
 var xbinance = "b29d0acb-9a6e-49f2-8fd8-a137559f834c";
+var xbinance2 = "cca3ee77-fba1-4840-9a7a-3482a57d97e9";
 
 // Convert encoding streaming for binance
 // fs.createReadStream('/root/HTS/Simulations/' + xbinance + '_history.json')
@@ -26,7 +27,7 @@ sim7.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/' + xbinance + '_history.json',
+		path: '/Simulations/' + xbinance2 + '_history.json',
 		port: 443,
 		method: 'GET'
 	};
