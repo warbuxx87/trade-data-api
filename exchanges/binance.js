@@ -16,7 +16,7 @@ binance.prototype.update = function() {
 	var self = this;
 	var options = {
 		host: 'data.alkemi.ai',
-		path: '/Simulations/binance2.json',
+		path: '/Simulations/binance.json',
 		port: 443,
 		method: 'GET'
 	};
