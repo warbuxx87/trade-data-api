@@ -49,9 +49,9 @@ sim7.prototype.update = function() {
 			var last2 = data.Orders.pop();
 
 			// how many orders in total?
-			var total1 = data.SpotOrders.length;
-			var total2 = data.Orders.length;
-			var total = total1 + total2;
+			var total = data.SpotOrders.length;
+			//var total2 = data.Orders.length;
+			//var total = total1 + total2;
 
 
 			// amount of successful buy_orders?
