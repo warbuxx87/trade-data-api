@@ -1,47 +1,35 @@
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
-0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
+# Trade Data API
 
+> Node.js service that collects trade data from 9 exchanges and serves it through a paginated REST API. Express · NeDB.
 
-#Arbitrage Monitor
-Exchange monitor dashboard, connects to various exchanges through API, may be useful to find arbitrage opportunities
+<p>
+<img src="https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js" />
+<img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white" alt="Express" />
+</p>
 
-## Intention
-It is a known fact that the Bitcoin prices differ from exchange to exchange. The question of how to help different markets find equilibrium by buying a cheap market and selling an expensive one, taking profit for the operation, has a long history.
+Collects executed trades from Binance, Bitfinex, Bitstamp, Bittrex, Coinbase (GDAX), Gemini, HitBTC, Kraken and Poloniex, stores them locally and exposes them through a paginated REST API.
 
-This project's idea is to provide a live tool to compare exchanges' bid/ask (=buy/sell) prices to the same number which indicates a "fair" Bitcoin price for the moment. This creates a system of coordinates to the comparison, and clearly divides "cheap" markets from "expensive" ones.
+## How it works
 
-Obviously, the "fairness" concept is a subjective one. This dashboard uses [a weighted average of several impactful exchange prices](https://tradeblock.com/) to get the Bitcoin price index which all prices are compared to.
+- `exchanges/` has a connector per venue, with retry and timeout handling for unreliable exchange APIs.
+- `trades/` and `history/` track the activity of each strategy worker ("bot").
+- `exchange-data.js` and `trades.js` serve the data through Express with `express-paginate`, using `toobusy-js` for back-pressure.
+- Storage is embedded NeDB, so there's no external database to run.
 
-We can also go further and see how much we can win if Bitcoin is purchased at the lowest market and sold on the highest one right now. We should warn, however, that such strategy has some risk involved, because it is difficult to perform two operations at the same time, and each exchange market has its own rules about moving funds.
+## Stack
 
-## Demo
-https://btc.alkemi.ai/
+Node.js, Express
 
-## Supported exchanges
-* http://bitfinex.com/
-* http://okcoin.com/
-* http://itbit.com/
-* http://bitstamp.com/
-* http://quadrigacx.com/
-* http://quoine.com/
-* http://kraken.com/
-* http://coinbase.com/
-* http://gemini.com/
-* http://bittrex.com/
-* http://poloniex.com/
-* http://binance.com/
-* http://liqui.com/
+## Running locally
+
+```bash
+npm install
+node exchange-data.js
+```
+
+## Credits
+
+Built by me at Alkemi, 2018–2019 (254 commits).
+
+---
+<sub>Part of <a href="https://github.com/warbuxx87">Ryan Breen's</a> work · <a href="https://www.linkedin.com/in/breen-ryan/">LinkedIn</a></sub>
